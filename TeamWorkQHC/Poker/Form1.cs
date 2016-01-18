@@ -530,7 +530,7 @@ namespace Poker
                         FixCall(b1Status, ref b1Call, ref b1Raise, 2);
                         Rules(2, 3, "Bot 1", ref b1Type, ref b1Power, B1Fturn);
                         MessageBox.Show("Bot 1's Turn");
-                        AI(2, 3, ref bot1Chips, ref B1turn, ref  B1Fturn, b1Status, 0, b1Power, b1Type);
+                        Ai(2, 3, ref bot1Chips, ref B1turn, ref  B1Fturn, b1Status, 0, b1Power, b1Type);
                         turnCount++;
                         last = 1;
                         B1turn = false;
@@ -557,7 +557,7 @@ namespace Poker
                         FixCall(b2Status, ref b2Call, ref b2Raise, 2);
                         Rules(4, 5, "Bot 2", ref b2Type, ref b2Power, B2Fturn);
                         MessageBox.Show("Bot 2's Turn");
-                        AI(4, 5, ref bot2Chips, ref B2turn, ref  B2Fturn, b2Status, 1, b2Power, b2Type);
+                        Ai(4, 5, ref bot2Chips, ref B2turn, ref  B2Fturn, b2Status, 1, b2Power, b2Type);
                         turnCount++;
                         last = 2;
                         B2turn = false;
@@ -584,7 +584,7 @@ namespace Poker
                         FixCall(b3Status, ref b3Call, ref b3Raise, 2);
                         Rules(6, 7, "Bot 3", ref b3Type, ref b3Power, B3Fturn);
                         MessageBox.Show("Bot 3's Turn");
-                        AI(6, 7, ref bot3Chips, ref B3turn, ref  B3Fturn, b3Status, 2, b3Power, b3Type);
+                        Ai(6, 7, ref bot3Chips, ref B3turn, ref  B3Fturn, b3Status, 2, b3Power, b3Type);
                         turnCount++;
                         last = 3;
                         B3turn = false;
@@ -611,7 +611,7 @@ namespace Poker
                         FixCall(b4Status, ref b4Call, ref b4Raise, 2);
                         Rules(8, 9, "Bot 4", ref b4Type, ref b4Power, B4Fturn);
                         MessageBox.Show("Bot 4's Turn");
-                        AI(8, 9, ref bot4Chips, ref B4turn, ref  B4Fturn, b4Status, 3, b4Power, b4Type);
+                        Ai(8, 9, ref bot4Chips, ref B4turn, ref  B4Fturn, b4Status, 3, b4Power, b4Type);
                         turnCount++;
                         last = 4;
                         B4turn = false;
@@ -638,7 +638,7 @@ namespace Poker
                         FixCall(b5Status, ref b5Call, ref b5Raise, 2);
                         Rules(10, 11, "Bot 5", ref b5Type, ref b5Power, B5Fturn);
                         MessageBox.Show("Bot 5's Turn");
-                        AI(10, 11, ref bot5Chips, ref B5turn, ref  B5Fturn, b5Status, 4, b5Power, b5Type);
+                        Ai(10, 11, ref bot5Chips, ref B5turn, ref  B5Fturn, b5Status, 4, b5Power, b5Type);
                         turnCount++;
                         last = 5;
                         B5turn = false;
@@ -2199,24 +2199,77 @@ namespace Poker
 
 
         }
+        // Ot tuk
         async Task Finish(int n)
         {
             if (n == 2)
             {
                 FixWinners();
             }
-            pPanel.Visible = false; b1Panel.Visible = false; b2Panel.Visible = false; b3Panel.Visible = false; b4Panel.Visible = false; b5Panel.Visible = false;
+            pPanel.Visible = false;
+            b1Panel.Visible = false;
+            b2Panel.Visible = false;
+            b3Panel.Visible = false;
+            b4Panel.Visible = false;
+            b5Panel.Visible = false;
             call = bb; Raise = 0;
             foldedPlayers = 5;
-            type = 0; rounds = 0; b1Power = 0; b2Power = 0; b3Power = 0; b4Power = 0; b5Power = 0; pPower = 0; pType = -1; Raise = 0;
-            b1Type = -1; b2Type = -1; b3Type = -1; b4Type = -1; b5Type = -1;
-            B1turn = false; B2turn = false; B3turn = false; B4turn = false; B5turn = false;
-            B1Fturn = false; B2Fturn = false; B3Fturn = false; B4Fturn = false; B5Fturn = false;
-            pFolded = false; b1Folded = false; b2Folded = false; b3Folded = false; b4Folded = false; b5Folded = false;
-            PFturn = false; Pturn = true; restart = false; raising = false;
-            pCall = 0; b1Call = 0; b2Call = 0; b3Call = 0; b4Call = 0; b5Call = 0; pRaise = 0; b1Raise = 0; b2Raise = 0; b3Raise = 0; b4Raise = 0; b5Raise = 0;
-            height = 0; width = 0; winners = 0; Flop = 1; Turn = 2; River = 3; End = 4; maxLeft = 6;
-            last = 123; raisedTurn = 1;
+            type = 0; rounds = 0;
+            b1Power = 0;
+            b2Power = 0;
+            b3Power = 0;
+            b4Power = 0;
+            b5Power = 0;
+            pPower = 0;
+            pType = -1;
+            Raise = 0;
+            b1Type = -1;
+            b2Type = -1;
+            b3Type = -1;
+            b4Type = -1;
+            b5Type = -1;
+            B1turn = false;
+            B2turn = false;
+            B3turn = false;
+            B4turn = false;
+            B5turn = false;
+            B1Fturn = false;
+            B2Fturn = false;
+            B3Fturn = false;
+            B4Fturn = false;
+            B5Fturn = false;
+            pFolded = false;
+            b1Folded = false;
+            b2Folded = false;
+            b3Folded = false;
+            b4Folded = false;
+            b5Folded = false;
+            PFturn = false;
+            Pturn = true;
+            restart = false;
+            raising = false;
+            pCall = 0;
+            b1Call = 0;
+            b2Call = 0;
+            b3Call = 0;
+            b4Call = 0;
+            b5Call = 0;
+            pRaise = 0;
+            b1Raise = 0;
+            b2Raise = 0;
+            b3Raise = 0;
+            b4Raise = 0;
+            b5Raise = 0;
+            height = 0;
+            width = 0;
+            winners = 0;
+            Flop = 1;
+            Turn = 2;
+            River = 3;
+            End = 4;
+            maxLeft = 6;
+            last = 123;
+            raisedTurn = 1;
             bools.Clear();
             CheckWinners.Clear();
             ints.Clear();
@@ -2224,7 +2277,9 @@ namespace Poker
             sorted.Current = 0;
             sorted.Power = 0;
             tbPot.Text = "0";
-            t = 60; up = 10000000; turnCount = 0;
+            t = 60;
+            up = 10000000;
+            turnCount = 0;
             pStatus.Text = "";
             b1Status.Text = "";
             b2Status.Text = "";
@@ -2251,6 +2306,7 @@ namespace Poker
                     bRaise.Text = "Raise";
                 }
             }
+
             ImgLocation = Directory.GetFiles("Assets\\Cards", "*.png", SearchOption.TopDirectoryOnly);
             for (int os = 0; os < 17; os++)
             {
@@ -2258,9 +2314,11 @@ namespace Poker
                 Holder[os].Invalidate();
                 Holder[os].Visible = false;
             }
+
             await Shuffle();
             //await Turns();
         }
+
         void FixWinners()
         {
             Win.Clear();
@@ -2272,31 +2330,37 @@ namespace Poker
                 fixedLast = "Player";
                 Rules(0, 1, "Player", ref pType, ref pPower, PFturn);
             }
+
             if (!b1Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 1";
                 Rules(2, 3, "Bot 1", ref b1Type, ref b1Power, B1Fturn);
             }
+
             if (!b2Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 2";
                 Rules(4, 5, "Bot 2", ref b2Type, ref b2Power, B2Fturn);
             }
+
             if (!b3Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 3";
                 Rules(6, 7, "Bot 3", ref b3Type, ref b3Power, B3Fturn);
             }
+
             if (!b4Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 4";
                 Rules(8, 9, "Bot 4", ref b4Type, ref b4Power, B4Fturn);
             }
+
             if (!b5Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 5";
                 Rules(10, 11, "Bot 5", ref b5Type, ref b5Power, B5Fturn);
             }
+
             Winner(pType, pPower, "Player", Chips, fixedLast);
             Winner(b1Type, b1Power, "Bot 1", bot1Chips, fixedLast);
             Winner(b2Type, b2Power, "Bot 2", bot2Chips, fixedLast);
@@ -2304,7 +2368,8 @@ namespace Poker
             Winner(b4Type, b4Power, "Bot 4", bot4Chips, fixedLast);
             Winner(b5Type, b5Power, "Bot 5", bot5Chips, fixedLast);
         }
-        void AI(int c1, int c2, ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower, double botCurrent)
+
+        private void Ai(int c1, int c2, ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower, double botCurrent)
         {
             if (!sFTurn)
             {
@@ -2359,121 +2424,139 @@ namespace Poker
         {
             HP(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower, 20, 25);
         }
+
         private void PairTable(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
         {
             HP(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower, 16, 25);
         }
+
         private void PairHand(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
         {
-            Random rPair = new Random();
-            int rCall = rPair.Next(10, 16);
-            int rRaise = rPair.Next(10, 13);
+            Random randomPair = new Random();
+            int randomCall = randomPair.Next(10, 16);
+            int randomRaise = randomPair.Next(10, 13);
             if (botPower <= 199 && botPower >= 140)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 6, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 6, randomRaise);
             }
+
             if (botPower <= 139 && botPower >= 128)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 7, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 7, randomRaise);
             }
+
             if (botPower < 128 && botPower >= 101)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 9, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 9, randomRaise);
             }
         }
+
         private void TwoPair(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
         {
-            Random rPair = new Random();
-            int rCall = rPair.Next(6, 11);
-            int rRaise = rPair.Next(6, 11);
+            Random randPair = new Random();
+            int randomCall = randPair.Next(6, 11);
+            int randomRaise = randPair.Next(6, 11);
             if (botPower <= 290 && botPower >= 246)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 3, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 3, randomRaise);
             }
+
             if (botPower <= 244 && botPower >= 234)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 4, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 4, randomRaise);
             }
+
             if (botPower < 234 && botPower >= 201)
             {
-                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, rCall, 4, rRaise);
+                PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 4, randomRaise);
             }
         }
+
         private void ThreeOfAKind(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random tk = new Random();
-            int tCall = tk.Next(3, 7);
-            int tRaise = tk.Next(4, 8);
+            Random randomThreeOfAKind = new Random();
+            int threeOfAKindCall = randomThreeOfAKind.Next(3, 7);
+            int threeOfAKindRaise = randomThreeOfAKind.Next(4, 8);
             if (botPower <= 390 && botPower >= 330)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, tCall, tRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
+
             if (botPower <= 327 && botPower >= 321)//10  8
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, tCall, tRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
+
             if (botPower < 321 && botPower >= 303)//7 2
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, tCall, tRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
         }
+
         private void Straight(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random str = new Random();
-            int sCall = str.Next(3, 6);
-            int sRaise = str.Next(3, 8);
+            Random randomStraight = new Random();
+            int straightCall = randomStraight.Next(3, 6);
+            int straightRaise = randomStraight.Next(3, 8);
             if (botPower <= 480 && botPower >= 410)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sCall, sRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
             }
+
             if (botPower <= 409 && botPower >= 407)//10  8
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sCall, sRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
             }
+
             if (botPower < 407 && botPower >= 404)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sCall, sRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
             }
         }
+
         private void Flush(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random fsh = new Random();
-            int fCall = fsh.Next(2, 6);
-            int fRaise = fsh.Next(3, 7);
-            Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fCall, fRaise);
+            Random randomFlush = new Random();
+            int flushCall = randomFlush.Next(2, 6);
+            int flushRaise = randomFlush.Next(3, 7);
+            Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, flushCall, flushRaise);
         }
+
         private void FullHouse(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random flh = new Random();
-            int fhCall = flh.Next(1, 5);
-            int fhRaise = flh.Next(2, 6);
+            Random randomFullHouse = new Random();
+            int fullHouseCall = randomFullHouse.Next(1, 5);
+            int fullHouseRaise = randomFullHouse.Next(2, 6);
             if (botPower <= 626 && botPower >= 620)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fhCall, fhRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fullHouseCall, fullHouseRaise);
             }
+
             if (botPower < 620 && botPower >= 602)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fhCall, fhRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fullHouseCall, fullHouseRaise);
             }
         }
+
         private void FourOfAKind(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random fk = new Random();
-            int fkCall = fk.Next(1, 4);
-            int fkRaise = fk.Next(2, 5);
+            Random randomFourOfAKind = new Random();
+            int fourOfAKindCall = randomFourOfAKind.Next(1, 4);
+            int fourOfAKindRaise = randomFourOfAKind.Next(2, 5);
             if (botPower <= 752 && botPower >= 704)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fkCall, fkRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fourOfAKindCall, fourOfAKindRaise);
             }
         }
+
         private void StraightFlush(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
         {
-            Random sf = new Random();
-            int sfCall = sf.Next(1, 3);
-            int sfRaise = sf.Next(1, 3);
+            Random randomStraightFlush = new Random();
+            int straightFlushCall = randomStraightFlush.Next(1, 3);
+            int straightFlushRaise = randomStraightFlush.Next(1, 3);
             if (botPower <= 913 && botPower >= 804)
             {
-                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, sfCall, sfRaise);
+                Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightFlushCall, straightFlushRaise);
             }
         }
 
@@ -2484,12 +2567,14 @@ namespace Poker
             sTurn = false;
             sFTurn = true;
         }
+
         private void Check(ref bool cTurn, Label cStatus)
         {
             cStatus.Text = "Check";
             cTurn = false;
             raising = false;
         }
+
         private void Call(ref int sChips, ref bool sTurn, Label sStatus)
         {
             raising = false;
@@ -2498,6 +2583,7 @@ namespace Poker
             sStatus.Text = "Call " + call;
             tbPot.Text = (int.Parse(tbPot.Text) + call).ToString();
         }
+
         private void Raised(ref int sChips, ref bool sTurn, Label sStatus)
         {
             sChips -= Convert.ToInt32(Raise);
@@ -2507,11 +2593,13 @@ namespace Poker
             raising = true;
             sTurn = false;
         }
+
         private static double RoundN(int sChips, int n)
         {
             double a = Math.Round((sChips / n) / 100d, 0) * 100;
             return a;
         }
+
         private void HP(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower, int n, int n1)
         {
             Random rand = new Random();
@@ -2520,6 +2608,7 @@ namespace Poker
             {
                 Check(ref sTurn, sStatus);
             }
+
             if (call > 0)
             {
                 if (rnd == 1)
@@ -2545,6 +2634,7 @@ namespace Poker
                     }
                 }
             }
+
             if (rnd == 3)
             {
                 if (Raise == 0)
@@ -2565,11 +2655,13 @@ namespace Poker
                     }
                 }
             }
+
             if (sChips <= 0)
             {
                 sFTurn = true;
             }
         }
+
         private void PH(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int n, int n1, int r)
         {
             Random rand = new Random();
@@ -2665,6 +2757,8 @@ namespace Poker
                 sFTurn = true;
             }
         }
+
+        // Do tuk
         void Smooth(ref int botChips, ref bool botTurn, ref bool botFTurn, Label botStatus, int name, int n, int r)
         {
             Random rand = new Random();
