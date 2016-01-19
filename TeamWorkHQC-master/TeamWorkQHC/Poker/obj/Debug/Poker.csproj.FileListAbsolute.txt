@@ -1,0 +1,21 @@
+F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\bin\Debug\Poker.exe
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\bin\Debug\Poker.pdb
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.csprojResolveAssemblyReference.cache
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.AddChips.resources
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.Form1.resources
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.Properties.Resources.resources
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.csproj.GenerateResource.Cache
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.exe
+C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.pdb
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.exe
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.pdb
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.exe
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.pdb
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.csprojResolveAssemblyReference.cache
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.AddChips.resources
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.Form1.resources
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.Properties.Resources.resources
+C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.csproj.GenerateResource.Cache
