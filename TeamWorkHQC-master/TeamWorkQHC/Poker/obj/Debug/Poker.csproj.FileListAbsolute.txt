@@ -19,3 +19,6 @@ C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.Ad
 C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.Form1.resources
 C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.Properties.Resources.resources
 C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.csproj.GenerateResource.Cache
+F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.exe
+F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.pdb

@@ -515,7 +515,7 @@
             {
                 if (this.playerTurn)
                 {
-                    this.FixCall(this.pStatus, ref this.playerCall, ref this.playerRaise, 1);
+                    this.FixCall(this.playerStatus, ref this.playerCall, ref this.playerRaise, 1);
 
                     // MessageBox.Show("Player's Turn");
                     this.pbTimer.Visible = true;
@@ -529,7 +529,7 @@
                     this.bRaise.Enabled = true;
                     this.bFold.Enabled = true;
                     this.turnCount++;
-                    this.FixCall(this.pStatus, ref this.playerCall, ref this.playerRaise, 2);
+                    this.FixCall(this.playerStatus, ref this.playerCall, ref this.playerRaise, 2);
                 }
             }
 
@@ -560,8 +560,8 @@
                 {
                     if (this.botOneTurn)
                     {
-                        this.FixCall(this.b1Status, ref this.botOneCall, ref this.botOneRaise, 1);
-                        this.FixCall(this.b1Status, ref this.botOneCall, ref this.botOneRaise, 2);
+                        this.FixCall(this.botOneStatus, ref this.botOneCall, ref this.botOneRaise, 1);
+                        this.FixCall(this.botOneStatus, ref this.botOneCall, ref this.botOneRaise, 2);
                         this.Rules(2, 3, "Bot 1", ref this.botOneType, ref this.botOnePower, this.botOneFinishedTurn);
 
                         // TODO replace the text with constants
@@ -572,7 +572,7 @@
                             ref this.botOneChips, 
                             ref this.botOneTurn, 
                             ref this.botOneFinishedTurn, 
-                            this.b1Status, 
+                            this.botOneStatus, 
                             0, 
                             this.botOnePower, 
                             this.botOneType);
@@ -601,8 +601,8 @@
                 {
                     if (this.botTwoTurn)
                     {
-                        this.FixCall(this.b2Status, ref this.botTwoCall, ref this.botTwoRaise, 1);
-                        this.FixCall(this.b2Status, ref this.botTwoCall, ref this.botTwoRaise, 2);
+                        this.FixCall(this.bot2Status, ref this.botTwoCall, ref this.botTwoRaise, 1);
+                        this.FixCall(this.bot2Status, ref this.botTwoCall, ref this.botTwoRaise, 2);
                         this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
 
                         // TODO replace the text with constants
@@ -613,7 +613,7 @@
                             ref this.botTwoChips, 
                             ref this.botTwoTurn, 
                             ref this.botTwoFinishedTurn, 
-                            this.b2Status, 
+                            this.bot2Status, 
                             1, 
                             this.botTwoPower, 
                             this.botTwoType);
@@ -642,8 +642,8 @@
                 {
                     if (this.botThreeTurn)
                     {
-                        this.FixCall(this.b3Status, ref this.botThreeCall, ref this.botThreeRaise, 1);
-                        this.FixCall(this.b3Status, ref this.botThreeCall, ref this.botThreeRaise, 2);
+                        this.FixCall(this.bot3Status, ref this.botThreeCall, ref this.botThreeRaise, 1);
+                        this.FixCall(this.bot3Status, ref this.botThreeCall, ref this.botThreeRaise, 2);
                         this.Rules(
                             6, 
                             7, 
@@ -660,7 +660,7 @@
                             ref this.botThreeChips, 
                             ref this.botThreeTurn, 
                             ref this.botThreeFinishedTurn, 
-                            this.b3Status, 
+                            this.bot3Status, 
                             2, 
                             this.botThreePower, 
                             this.botThreeType);
@@ -689,8 +689,8 @@
                 {
                     if (this.botFourTurn)
                     {
-                        this.FixCall(this.b4Status, ref this.botFourCall, ref this.botFourRaise, 1);
-                        this.FixCall(this.b4Status, ref this.botFourCall, ref this.botFourRaise, 2);
+                        this.FixCall(this.bot4Status, ref this.botFourCall, ref this.botFourRaise, 1);
+                        this.FixCall(this.bot4Status, ref this.botFourCall, ref this.botFourRaise, 2);
                         this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
 
                         // TODO replace the text with constants
@@ -701,7 +701,7 @@
                             ref this.botFourChips, 
                             ref this.botFourTurn, 
                             ref this.botFourFinishedTurn, 
-                            this.b4Status, 
+                            this.bot4Status, 
                             3, 
                             this.botFourPower, 
                             this.botFourType);
@@ -730,8 +730,8 @@
                 {
                     if (this.botFiveTurn)
                     {
-                        this.FixCall(this.b5Status, ref this.botFiveCall, ref this.botFiveRaise, 1);
-                        this.FixCall(this.b5Status, ref this.botFiveCall, ref this.botFiveRaise, 2);
+                        this.FixCall(this.bot5Status, ref this.botFiveCall, ref this.botFiveRaise, 1);
+                        this.FixCall(this.bot5Status, ref this.botFiveCall, ref this.botFiveRaise, 2);
                         this.Rules(
                             10, 
                             11, 
@@ -748,7 +748,7 @@
                             ref this.botFiveChips, 
                             ref this.botFiveTurn, 
                             ref this.botFiveFinishedTurn, 
-                            this.b5Status, 
+                            this.bot5Status, 
                             4, 
                             this.botFivePower, 
                             this.botFiveType);
@@ -800,7 +800,7 @@
             }
 
             // TODO Group conditions and put parenthesis
-            if (!foldedTurn || c1 == 0 && c2 == 1 && this.pStatus.Text.Contains("Fold") == false)
+            if (!foldedTurn || c1 == 0 && c2 == 1 && this.playerStatus.Text.Contains("Fold") == false)
             {
                 bool done = false, vf = false;
                 var Straight1 = new int[5];
@@ -2356,32 +2356,32 @@
                         this.rounds++;
                         if (!this.playerFinishedHisTurn)
                         {
-                            this.pStatus.Text = string.Empty;
+                            this.playerStatus.Text = string.Empty;
                         }
 
                         if (!this.botOneFinishedTurn)
                         {
-                            this.b1Status.Text = string.Empty;
+                            this.botOneStatus.Text = string.Empty;
                         }
 
                         if (!this.botTwoFinishedTurn)
                         {
-                            this.b2Status.Text = string.Empty;
+                            this.bot2Status.Text = string.Empty;
                         }
 
                         if (!this.botThreeFinishedTurn)
                         {
-                            this.b3Status.Text = string.Empty;
+                            this.bot3Status.Text = string.Empty;
                         }
 
                         if (!this.botFourFinishedTurn)
                         {
-                            this.b4Status.Text = string.Empty;
+                            this.bot4Status.Text = string.Empty;
                         }
 
                         if (!this.botFiveFinishedTurn)
                         {
-                            this.b5Status.Text = string.Empty;
+                            this.bot5Status.Text = string.Empty;
                         }
                     }
                 }
@@ -2466,37 +2466,37 @@
             if (Math.Abs(this.rounds - this.end) < FloatingPointsTolerance && this.maxLeft == 6)
             {
                 var fixedLast = "qwerty";
-                if (!this.pStatus.Text.Contains("Fold"))
+                if (!this.playerStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Player";
                     this.Rules(0, 1, "Player", ref this.pType, ref this.playerPower, this.playerFinishedHisTurn);
                 }
 
-                if (!this.b1Status.Text.Contains("Fold"))
+                if (!this.botOneStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 1";
                     this.Rules(2, 3, "Bot 1", ref this.botOneType, ref this.botOnePower, this.botOneFinishedTurn);
                 }
 
-                if (!this.b2Status.Text.Contains("Fold"))
+                if (!this.bot2Status.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 2";
                     this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
                 }
 
-                if (!this.b3Status.Text.Contains("Fold"))
+                if (!this.bot3Status.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 3";
                     this.Rules(6, 7, "Bot 3", ref this.botThreeType, ref this.botThreePower, this.botThreeFinishedTurn);
                 }
 
-                if (!this.b4Status.Text.Contains("Fold"))
+                if (!this.bot4Status.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 4";
                     this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
                 }
 
-                if (!this.b5Status.Text.Contains("Fold"))
+                if (!this.bot5Status.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 5";
                     this.Rules(10, 11, "Bot 5", ref this.botFiveType, ref this.botFivePower, this.botFiveFinishedTurn);
@@ -2591,7 +2591,7 @@
 
                 // TODO move to const or resourse
                 this.tbPot.Text = "0";
-                this.pStatus.Text = string.Empty;
+                this.playerStatus.Text = string.Empty;
                 await this.Shuffle();
                 await this.Turns();
             }
@@ -2654,13 +2654,13 @@
         {
             if (this.playerChips <= 0 && !this.intsadded)
             {
-                if (this.pStatus.Text.Contains("Raise"))
+                if (this.playerStatus.Text.Contains("Raise"))
                 {
                     this.ints.Add(this.playerChips);
                     this.intsadded = true;
                 }
 
-                if (this.pStatus.Text.Contains("Call"))
+                if (this.playerStatus.Text.Contains("Call"))
                 {
                     this.ints.Add(this.playerChips);
                     this.intsadded = true;
@@ -2884,12 +2884,12 @@
             this.t = 60;
             this.up = 10000000;
             this.turnCount = 0;
-            this.pStatus.Text = string.Empty;
-            this.b1Status.Text = string.Empty;
-            this.b2Status.Text = string.Empty;
-            this.b3Status.Text = string.Empty;
-            this.b4Status.Text = string.Empty;
-            this.b5Status.Text = string.Empty;
+            this.playerStatus.Text = string.Empty;
+            this.botOneStatus.Text = string.Empty;
+            this.bot2Status.Text = string.Empty;
+            this.bot3Status.Text = string.Empty;
+            this.bot4Status.Text = string.Empty;
+            this.bot5Status.Text = string.Empty;
             if (this.playerChips <= 0)
             {
                 var f2 = new AddChips();
@@ -2930,37 +2930,38 @@
             this.sorted.Current = 0;
             this.sorted.Power = 0;
             var fixedLast = "qwerty";
-            if (!this.pStatus.Text.Contains("Fold"))
+
+            if (!this.playerStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Player";
                 this.Rules(0, 1, "Player", ref this.pType, ref this.playerPower, this.playerFinishedHisTurn);
             }
 
-            if (!this.b1Status.Text.Contains("Fold"))
+            if (!this.botOneStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 1";
                 this.Rules(2, 3, "Bot 1", ref this.botOneType, ref this.botOnePower, this.botOneFinishedTurn);
             }
 
-            if (!this.b2Status.Text.Contains("Fold"))
+            if (!this.bot2Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 2";
                 this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
             }
 
-            if (!this.b3Status.Text.Contains("Fold"))
+            if (!this.bot3Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 3";
                 this.Rules(6, 7, "Bot 3", ref this.botThreeType, ref this.botThreePower, this.botThreeFinishedTurn);
             }
 
-            if (!this.b4Status.Text.Contains("Fold"))
+            if (!this.bot4Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 4";
                 this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
             }
 
-            if (!this.b5Status.Text.Contains("Fold"))
+            if (!this.bot5Status.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 5";
                 this.Rules(10, 11, "Bot 5", ref this.botFiveType, ref this.botFivePower, this.botFiveFinishedTurn);
@@ -2976,136 +2977,136 @@
 
         // TODO Add switch
         private void Ai(
-            int c1, 
-            int c2, 
-            ref int sChips, 
-            ref bool sTurn, 
-            ref bool sFTurn, 
-            Label sStatus, 
+            int firstCardIndex, 
+            int secondCardIndex, 
+            ref int botChips, 
+            ref bool botTurn, 
+            ref bool botFinishedTurn, 
+            Label botStatus, 
             int name, 
             double botPower, 
             double botCurrent)
         {
-            if (!sFTurn)
+            if (!botFinishedTurn)
             {
                 if (Math.Abs(botCurrent - (-1)) < FloatingPointsTolerance)
                 {
-                    this.HighCard(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower);
+                    this.HighCard(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, botPower);
                 }
 
                 if (Math.Abs(botCurrent) < FloatingPointsTolerance)
                 {
-                    this.PairTable(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower);
+                    this.PairTable(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 1) < FloatingPointsTolerance)
                 {
-                    this.PairHand(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower);
+                    this.PairHand(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 2) < FloatingPointsTolerance)
                 {
-                    this.TwoPair(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower);
+                    this.TwoPair(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 3) < FloatingPointsTolerance)
                 {
-                    this.ThreeOfAKind(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.ThreeOfAKind(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 4) < FloatingPointsTolerance)
                 {
-                    this.Straight(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.Straight(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 5) < FloatingPointsTolerance
                     || Math.Abs(botCurrent - 5.5) < FloatingPointsTolerance)
                 {
-                    this.Flush(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.Flush(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 6) < FloatingPointsTolerance)
                 {
-                    this.FullHouse(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.FullHouse(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 7) < FloatingPointsTolerance)
                 {
-                    this.FourOfAKind(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.FourOfAKind(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
 
                 if (Math.Abs(botCurrent - 8) < FloatingPointsTolerance
                     || Math.Abs(botCurrent - 9) < FloatingPointsTolerance)
                 {
-                    this.StraightFlush(ref sChips, ref sTurn, ref sFTurn, sStatus, name, botPower);
+                    this.StraightFlush(ref botChips, ref botTurn, ref botFinishedTurn, botStatus, name, botPower);
                 }
             }
 
-            if (!sFTurn)
+            if (!botFinishedTurn)
             {
                 return;
             }
 
-            this.cardHolder[c1].Visible = false;
-            this.cardHolder[c2].Visible = false;
+            this.cardHolder[firstCardIndex].Visible = false;
+            this.cardHolder[secondCardIndex].Visible = false;
         }
 
-        private void HighCard(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
+        private void HighCard(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, double botPower)
         {
-            this.HP(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower, 20, 25);
+            this.HP(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, botPower, 20, 25);
         }
 
-        private void PairTable(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
+        private void PairTable(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, double botPower)
         {
-            this.HP(ref sChips, ref sTurn, ref sFTurn, sStatus, botPower, 16, 25);
+            this.HP(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, botPower, 16, 25);
         }
 
-        private void PairHand(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
+        private void PairHand(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, double botPower)
         {
             var randomPair = new Random();
             var randomCall = randomPair.Next(10, 16);
             var randomRaise = randomPair.Next(10, 13);
             if (botPower <= 199 && botPower >= 140)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 6, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 6, randomRaise);
             }
 
             if (botPower <= 139 && botPower >= 128)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 7, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 7, randomRaise);
             }
 
             if (botPower < 128 && botPower >= 101)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 9, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 9, randomRaise);
             }
         }
 
-        private void TwoPair(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower)
+        private void TwoPair(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, double botPower)
         {
             var randPair = new Random();
             var randomCall = randPair.Next(6, 11);
             var randomRaise = randPair.Next(6, 11);
             if (botPower <= 290 && botPower >= 246)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 3, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 3, randomRaise);
             }
 
             if (botPower <= 244 && botPower >= 234)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 4, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 4, randomRaise);
             }
 
             if (botPower < 234 && botPower >= 201)
             {
-                this.PH(ref sChips, ref sTurn, ref sFTurn, sStatus, randomCall, 4, randomRaise);
+                this.PH(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, randomCall, 4, randomRaise);
             }
         }
 
         private void ThreeOfAKind(
-            ref int sChips, 
-            ref bool sTurn, 
-            ref bool sFTurn, 
+            ref int botChips, 
+            ref bool botTurn, 
+            ref bool botFinishedTurn, 
             Label sStatus, 
             int name, 
             double botPower)
@@ -3115,56 +3116,56 @@
             var threeOfAKindRaise = randomThreeOfAKind.Next(4, 8);
             if (botPower <= 390 && botPower >= 330)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
 
             if (botPower <= 327 && botPower >= 321)
             {
                 // 10  8
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
 
             if (botPower < 321 && botPower >= 303)
             {
                 // 7 2
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, threeOfAKindCall, threeOfAKindRaise);
             }
         }
 
-        private void Straight(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
+        private void Straight(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, int name, double botPower)
         {
             var randomStraight = new Random();
             var straightCall = randomStraight.Next(3, 6);
             var straightRaise = randomStraight.Next(3, 8);
             if (botPower <= 480 && botPower >= 410)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, straightCall, straightRaise);
             }
 
             if (botPower <= 409 && botPower >= 407)
             {
                 // 10  8
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, straightCall, straightRaise);
             }
 
             if (botPower < 407 && botPower >= 404)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightCall, straightRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, straightCall, straightRaise);
             }
         }
 
-        private void Flush(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int name, double botPower)
+        private void Flush(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, int name, double botPower)
         {
             var randomFlush = new Random();
             var flushCall = randomFlush.Next(2, 6);
             var flushRaise = randomFlush.Next(3, 7);
-            this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, flushCall, flushRaise);
+            this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, flushCall, flushRaise);
         }
 
         private void FullHouse(
-            ref int sChips, 
-            ref bool sTurn, 
-            ref bool sFTurn, 
+            ref int botChips, 
+            ref bool botTurn, 
+            ref bool botFinishedTurn, 
             Label sStatus, 
             int name, 
             double botPower)
@@ -3174,19 +3175,19 @@
             var fullHouseRaise = randomFullHouse.Next(2, 6);
             if (botPower <= 626 && botPower >= 620)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fullHouseCall, fullHouseRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, fullHouseCall, fullHouseRaise);
             }
 
             if (botPower < 620 && botPower >= 602)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fullHouseCall, fullHouseRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, fullHouseCall, fullHouseRaise);
             }
         }
 
         private void FourOfAKind(
-            ref int sChips, 
-            ref bool sTurn, 
-            ref bool sFTurn, 
+            ref int botChips, 
+            ref bool botTurn, 
+            ref bool botFinishedTurn, 
             Label sStatus, 
             int name, 
             double botPower)
@@ -3196,14 +3197,14 @@
             var fourOfAKindRaise = randomFourOfAKind.Next(2, 5);
             if (botPower <= 752 && botPower >= 704)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, fourOfAKindCall, fourOfAKindRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, fourOfAKindCall, fourOfAKindRaise);
             }
         }
 
         private void StraightFlush(
-            ref int sChips, 
-            ref bool sTurn, 
-            ref bool sFTurn, 
+            ref int botChips, 
+            ref bool botTurn, 
+            ref bool botFinishedTurn, 
             Label sStatus, 
             int name, 
             double botPower)
@@ -3213,76 +3214,76 @@
             var straightFlushRaise = randomStraightFlush.Next(1, 3);
             if (botPower <= 913 && botPower >= 804)
             {
-                this.Smooth(ref sChips, ref sTurn, ref sFTurn, sStatus, name, straightFlushCall, straightFlushRaise);
+                this.Smooth(ref botChips, ref botTurn, ref botFinishedTurn, sStatus, name, straightFlushCall, straightFlushRaise);
             }
         }
 
-        private void Fold(ref bool sTurn, ref bool sFTurn, Control sStatus)
+        private void Fold(ref bool botChips, ref bool botFinishedTurn, Control sStatus)
         {
             this.raising = false;
             sStatus.Text = "Fold";
-            sTurn = false;
-            sFTurn = true;
+            botChips = false;
+            botFinishedTurn = true;
         }
 
-        private void Check(ref bool cTurn, Control cStatus)
+        private void Check(ref bool currentTurn, Control currentStatus)
         {
-            cStatus.Text = "Check";
-            cTurn = false;
+            currentStatus.Text = "Check";
+            currentTurn = false;
             this.raising = false;
         }
 
-        private void Call(ref int sChips, ref bool sTurn, Control sStatus)
+        private void Call(ref int botChips, ref bool botTurn, Control sStatus)
         {
             this.raising = false;
-            sTurn = false;
-            sChips -= this.call;
+            botTurn = false;
+            botChips -= this.call;
             sStatus.Text = "Call " + this.call;
             this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.call).ToString();
         }
 
-        private void Raised(ref int sChips, ref bool sTurn, Label sStatus)
+        private void Raised(ref int botChips, ref bool botTurn, Label sStatus)
         {
-            sChips -= Convert.ToInt32(this.raise);
+            botChips -= Convert.ToInt32(this.raise);
             sStatus.Text = "Raise " + this.raise;
             this.tbPot.Text = (int.Parse(this.tbPot.Text) + Convert.ToInt32(this.raise)).ToString();
             this.call = Convert.ToInt32(this.raise);
             this.raising = true;
-            sTurn = false;
+            botTurn = false;
         }
 
-        private void HP(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, double botPower, int n, int n1)
+        private void HP(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, double botPower, int n, int n1)
         {
             var rand = new Random();
             var rnd = rand.Next(1, 4);
             if (this.call <= 0)
             {
-                this.Check(ref sTurn, sStatus);
+                this.Check(ref botTurn, sStatus);
             }
 
             if (this.call > 0)
             {
                 if (rnd == 1)
                 {
-                    if (this.call <= RoundN(sChips, n))
+                    if (this.call <= RoundN(botChips, n))
                     {
-                        this.Call(ref sChips, ref sTurn, sStatus);
+                        this.Call(ref botChips, ref botTurn, sStatus);
                     }
                     else
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
                 }
 
                 if (rnd == 2)
                 {
-                    if (this.call <= RoundN(sChips, n1))
+                    if (this.call <= RoundN(botChips, n1))
                     {
-                        this.Call(ref sChips, ref sTurn, sStatus);
+                        this.Call(ref botChips, ref botTurn, sStatus);
                     }
                     else
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
                 }
             }
@@ -3292,29 +3293,29 @@
                 if (Math.Abs(this.raise) < FloatingPointsTolerance)
                 {
                     this.raise = this.call * 2;
-                    this.Raised(ref sChips, ref sTurn, sStatus);
+                    this.Raised(ref botChips, ref botTurn, sStatus);
                 }
                 else
                 {
-                    if (this.raise <= RoundN(sChips, n))
+                    if (this.raise <= RoundN(botChips, n))
                     {
                         this.raise = this.call * 2;
-                        this.Raised(ref sChips, ref sTurn, sStatus);
+                        this.Raised(ref botChips, ref botTurn, sStatus);
                     }
                     else
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
                 }
             }
 
-            if (sChips <= 0)
+            if (botChips <= 0)
             {
-                sFTurn = true;
+                botFinishedTurn = true;
             }
         }
 
-        private void PH(ref int sChips, ref bool sTurn, ref bool sFTurn, Label sStatus, int n, int n1, int r)
+        private void PH(ref int botChips, ref bool botTurn, ref bool botFinishedTurn, Label sStatus, int n, int n1, int r)
         {
             var rand = new Random();
             var rnd = rand.Next(1, 3);
@@ -3322,44 +3323,44 @@
             {
                 if (this.call <= 0)
                 {
-                    this.Check(ref sTurn, sStatus);
+                    this.Check(ref botTurn, sStatus);
                 }
 
                 if (this.call > 0)
                 {
-                    if (this.call >= RoundN(sChips, n1))
+                    if (this.call >= RoundN(botChips, n1))
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
 
-                    if (this.raise > RoundN(sChips, n))
+                    if (this.raise > RoundN(botChips, n))
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
 
-                    if (!sFTurn)
+                    if (!botFinishedTurn)
                     {
-                        if (this.call >= RoundN(sChips, n) && this.call <= RoundN(sChips, n1))
+                        if (this.call >= RoundN(botChips, n) && this.call <= RoundN(botChips, n1))
                         {
-                            this.Call(ref sChips, ref sTurn, sStatus);
+                            this.Call(ref botChips, ref botTurn, sStatus);
                         }
 
-                        if (this.raise <= RoundN(sChips, n) && this.raise >= RoundN(sChips, n) / 2)
+                        if (this.raise <= RoundN(botChips, n) && this.raise >= RoundN(botChips, n) / 2)
                         {
-                            this.Call(ref sChips, ref sTurn, sStatus);
+                            this.Call(ref botChips, ref botTurn, sStatus);
                         }
 
-                        if (this.raise <= RoundN(sChips, n) / 2)
+                        if (this.raise <= RoundN(botChips, n) / 2)
                         {
                             if (this.raise > 0)
                             {
-                                this.raise = RoundN(sChips, n);
-                                this.Raised(ref sChips, ref sTurn, sStatus);
+                                this.raise = RoundN(botChips, n);
+                                this.Raised(ref botChips, ref botTurn, sStatus);
                             }
                             else
                             {
                                 this.raise = this.call * 2;
-                                this.Raised(ref sChips, ref sTurn, sStatus);
+                                this.Raised(ref botChips, ref botTurn, sStatus);
                             }
                         }
                     }
@@ -3370,39 +3371,39 @@
             {
                 if (this.call > 0)
                 {
-                    if (this.call >= RoundN(sChips, n1 - rnd))
+                    if (this.call >= RoundN(botChips, n1 - rnd))
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
 
-                    if (this.raise > RoundN(sChips, n - rnd))
+                    if (this.raise > RoundN(botChips, n - rnd))
                     {
-                        this.Fold(ref sTurn, ref sFTurn, sStatus);
+                        this.Fold(ref botTurn, ref botFinishedTurn, sStatus);
                     }
 
-                    if (!sFTurn)
+                    if (!botFinishedTurn)
                     {
-                        if (this.call >= RoundN(sChips, n - rnd) && this.call <= RoundN(sChips, n1 - rnd))
+                        if (this.call >= RoundN(botChips, n - rnd) && this.call <= RoundN(botChips, n1 - rnd))
                         {
-                            this.Call(ref sChips, ref sTurn, sStatus);
+                            this.Call(ref botChips, ref botTurn, sStatus);
                         }
 
-                        if (this.raise <= RoundN(sChips, n - rnd) && this.raise >= RoundN(sChips, n - rnd) / 2)
+                        if (this.raise <= RoundN(botChips, n - rnd) && this.raise >= RoundN(botChips, n - rnd) / 2)
                         {
-                            this.Call(ref sChips, ref sTurn, sStatus);
+                            this.Call(ref botChips, ref botTurn, sStatus);
                         }
 
-                        if (this.raise <= RoundN(sChips, n - rnd) / 2)
+                        if (this.raise <= RoundN(botChips, n - rnd) / 2)
                         {
                             if (this.raise > 0)
                             {
-                                this.raise = RoundN(sChips, n - rnd);
-                                this.Raised(ref sChips, ref sTurn, sStatus);
+                                this.raise = RoundN(botChips, n - rnd);
+                                this.Raised(ref botChips, ref botTurn, sStatus);
                             }
                             else
                             {
                                 this.raise = this.call * 2;
-                                this.Raised(ref sChips, ref sTurn, sStatus);
+                                this.Raised(ref botChips, ref botTurn, sStatus);
                             }
                         }
                     }
@@ -3410,14 +3411,14 @@
 
                 if (this.call <= 0)
                 {
-                    this.raise = RoundN(sChips, r - rnd);
-                    this.Raised(ref sChips, ref sTurn, sStatus);
+                    this.raise = RoundN(botChips, r - rnd);
+                    this.Raised(ref botChips, ref botTurn, sStatus);
                 }
             }
 
-            if (sChips <= 0)
+            if (botChips <= 0)
             {
-                sFTurn = true;
+                botFinishedTurn = true;
             }
         }
 
@@ -3797,7 +3798,7 @@
 
         private async void BFold_Click(object sender, EventArgs e)
         {
-            this.pStatus.Text = "Fold";
+            this.playerStatus.Text = "Fold";
             this.playerTurn = false;
             this.playerFinishedHisTurn = true;
             await this.Turns();
@@ -3808,11 +3809,11 @@
             if (this.call <= 0)
             {
                 this.playerTurn = false;
-                this.pStatus.Text = "Check";
+                this.playerStatus.Text = "Check";
             }
             else
             {
-                // pStatus.Text = "All in " + Chips;
+                // playerStatus.Text = "All in " + Chips;
                 this.bCheck.Enabled = false;
             }
 
@@ -3833,13 +3834,13 @@
                                       : this.call.ToString();
 
                 this.playerTurn = false;
-                this.pStatus.Text = "Call " + this.call;
+                this.playerStatus.Text = "Call " + this.call;
                 this.playerCall = this.call;
             }
             else if (this.playerChips <= this.call && this.call > 0)
             {
                 this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.playerChips).ToString();
-                this.pStatus.Text = "All in " + this.playerChips;
+                this.playerStatus.Text = "All in " + this.playerChips;
                 this.playerChips = 0;
                 this.tbChips.Text = "Chips : " + this.playerChips;
                 this.playerTurn = false;
@@ -3871,7 +3872,7 @@
                     {
                         this.call = int.Parse(this.tbRaise.Text);
                         this.raise = int.Parse(this.tbRaise.Text);
-                        this.pStatus.Text = "Raise " + this.call;
+                        this.playerStatus.Text = "Raise " + this.call;
                         this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.call).ToString();
                         this.bCall.Text = "Call";
                         this.playerChips -= int.Parse(this.tbRaise.Text);
@@ -3884,7 +3885,7 @@
                         this.call = this.playerChips;
                         this.raise = this.playerChips;
                         this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.playerChips).ToString();
-                        this.pStatus.Text = "Raise " + this.call;
+                        this.playerStatus.Text = "Raise " + this.call;
                         this.playerChips = 0;
                         this.raising = true;
                         this.last = 0;
