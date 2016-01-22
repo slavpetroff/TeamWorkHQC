@@ -9,3 +9,6 @@ C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.Properties.Resource
 C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.csproj.GenerateResource.Cache
 C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.exe
 C:\Users\Big\Desktop\clone\TeamWorkQHC\Poker\obj\Debug\Poker.pdb
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkQHC\Poker\obj\Debug\Poker.exe
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkQHC\Poker\obj\Debug\Poker.pdb

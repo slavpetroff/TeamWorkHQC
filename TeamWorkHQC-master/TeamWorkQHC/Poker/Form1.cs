@@ -32,36 +32,36 @@
             this.width = this.Width;
             this.height = this.Height;
             this.Shuffle();
-            this.tbPot.Enabled = false;
-            this.tbChips.Enabled = false;
-            this.tbBotChips1.Enabled = false;
-            this.tbBotChips2.Enabled = false;
-            this.tbBotChips3.Enabled = false;
-            this.tbBotChips4.Enabled = false;
-            this.tbBotChips5.Enabled = false;
-            this.tbChips.Text = "Chips : " + this.playerChips;
-            this.tbBotChips1.Text = "Chips : " + this.botOneChips;
-            this.tbBotChips2.Text = "Chips : " + this.botTwoChips;
-            this.tbBotChips3.Text = "Chips : " + this.botThreeChips;
-            this.tbBotChips4.Text = "Chips : " + this.botFourChips;
-            this.tbBotChips5.Text = "Chips : " + this.botFiveChips;
+            this.tablePot.Enabled = false;
+            this.tableChips.Enabled = false;
+            this.tableChipsBot1.Enabled = false;
+            this.tableChipsBot2.Enabled = false;
+            this.tableChipsBot3.Enabled = false;
+            this.tableChipsBot4.Enabled = false;
+            this.tableChipsBot5.Enabled = false;
+            this.tableChips.Text = "Chips : " + this.playerChips;
+            this.tableChipsBot1.Text = "Chips : " + this.botOneChips;
+            this.tableChipsBot2.Text = "Chips : " + this.botTwoChips;
+            this.tableChipsBot3.Text = "Chips : " + this.botThreeChips;
+            this.tableChipsBot4.Text = "Chips : " + this.botFourChips;
+            this.tableChipsBot5.Text = "Chips : " + this.botFiveChips;
             this.timer.Interval = 1 * 1 * 1000;
             this.timer.Tick += this.timer_Tick;
             this.updates.Interval = 1 * 1 * 100;
             this.updates.Tick += this.Update_Tick;
-            this.tbBB.Visible = true;
-            this.tbSB.Visible = true;
-            this.bBB.Visible = true;
-            this.bSB.Visible = true;
-            this.tbBB.Visible = true;
-            this.tbSB.Visible = true;
-            this.bBB.Visible = true;
-            this.bSB.Visible = true;
-            this.tbBB.Visible = false;
-            this.tbSB.Visible = false;
-            this.bBB.Visible = false;
-            this.bSB.Visible = false;
-            this.tbRaise.Text = (this.bigBlind * 2).ToString();
+            this.tableBigBlind.Visible = true;
+            this.tableSmallBlind.Visible = true;
+            this.buttonBigBlind.Visible = true;
+            this.buttonSmallBlind.Visible = true;
+            this.tableBigBlind.Visible = true;
+            this.tableSmallBlind.Visible = true;
+            this.buttonBigBlind.Visible = true;
+            this.buttonSmallBlind.Visible = true;
+            this.tableBigBlind.Visible = false;
+            this.tableSmallBlind.Visible = false;
+            this.buttonBigBlind.Visible = false;
+            this.buttonSmallBlind.Visible = false;
+            this.tableRaise.Text = (this.bigBlind * 2).ToString();
         }
 
         private static double RoundN(int sChips, int n)
@@ -78,10 +78,10 @@
             this.bools.Add(this.botThreeFinishedTurn);
             this.bools.Add(this.botFourFinishedTurn);
             this.bools.Add(this.botFiveFinishedTurn);
-            this.bCall.Enabled = false;
-            this.bRaise.Enabled = false;
-            this.bFold.Enabled = false;
-            this.bCheck.Enabled = false;
+            this.buttonCall.Enabled = false;
+            this.buttonRaise.Enabled = false;
+            this.buttonFold.Enabled = false;
+            this.buttonCheck.Enabled = false;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             var check = false;
@@ -301,6 +301,7 @@
                         }
 
                         this.cardHolder[10].Tag = this.reserve[10];
+
                         if (!check)
                         {
                             horizontal = 1160;
@@ -315,13 +316,12 @@
                         horizontal += this.cardHolder[this.i].Width;
                         this.cardHolder[this.i].Visible = true;
                         this.Controls.Add(this.botFivePanel);
-                        this.botFivePanel.Location = new Point(
-                            this.cardHolder[10].Left - 10, 
-                            this.cardHolder[10].Top - 10);
+                        this.botFivePanel.Location = new Point(this.cardHolder[10].Left - 10, this.cardHolder[10].Top - 10);
                         this.botFivePanel.BackColor = Color.DarkBlue;
                         this.botFivePanel.Height = 150;
                         this.botFivePanel.Width = 180;
                         this.botFivePanel.Visible = false;
+
                         if (this.i == 11)
                         {
                             check = false;
@@ -397,6 +397,7 @@
                 else
                 {
                     this.botTwoFinishedTurn = false;
+
                     if (this.i == 5)
                     {
                         if (this.cardHolder[5] != null)
@@ -416,6 +417,7 @@
                 else
                 {
                     this.botThreeFinishedTurn = false;
+
                     if (this.i == 7)
                     {
                         if (this.cardHolder[7] != null)
@@ -435,6 +437,7 @@
                 else
                 {
                     this.botFourFinishedTurn = false;
+
                     if (this.i == 9)
                     {
                         if (this.cardHolder[9] != null)
@@ -454,6 +457,7 @@
                 else
                 {
                     this.botFiveFinishedTurn = false;
+
                     if (this.i == 11)
                     {
                         if (this.cardHolder[11] != null)
@@ -485,6 +489,7 @@
                     "Would You Like To Play Again ?", 
                     "You Won , Congratulations ! ", 
                     MessageBoxButtons.YesNo);
+
                 if (dialogResult == DialogResult.Yes)
                 {
                     Application.Restart();
@@ -501,11 +506,11 @@
 
             if (this.i == 17)
             {
-                this.bRaise.Enabled = true;
-                this.bCall.Enabled = true;
-                this.bRaise.Enabled = true;
-                this.bRaise.Enabled = true;
-                this.bFold.Enabled = true;
+                this.buttonRaise.Enabled = true;
+                this.buttonCall.Enabled = true;
+                this.buttonRaise.Enabled = true;
+                this.buttonRaise.Enabled = true;
+                this.buttonFold.Enabled = true;
             }
         }
 
@@ -518,16 +523,16 @@
                     this.FixCall(this.playerStatus, ref this.playerCall, ref this.playerRaise, 1);
 
                     // MessageBox.Show("Player's Turn");
-                    this.pbTimer.Visible = true;
-                    this.pbTimer.Value = 1000;
+                    this.PlayerTurnTimer.Visible = true;
+                    this.PlayerTurnTimer.Value = 1000;
                     this.t = 60;
                     this.up = 10000000;
                     this.timer.Start();
-                    this.bRaise.Enabled = true;
-                    this.bCall.Enabled = true;
-                    this.bRaise.Enabled = true;
-                    this.bRaise.Enabled = true;
-                    this.bFold.Enabled = true;
+                    this.buttonRaise.Enabled = true;
+                    this.buttonCall.Enabled = true;
+                    this.buttonRaise.Enabled = true;
+                    this.buttonRaise.Enabled = true;
+                    this.buttonFold.Enabled = true;
                     this.turnCount++;
                     this.FixCall(this.playerStatus, ref this.playerCall, ref this.playerRaise, 2);
                 }
@@ -536,9 +541,10 @@
             if (this.playerFinishedHisTurn || !this.playerTurn)
             {
                 await this.AllIn();
+
                 if (this.playerFinishedHisTurn && !this.playerFolded)
                 {
-                    if (this.bCall.Text.Contains("All in") == false || this.bRaise.Text.Contains("All in") == false)
+                    if (this.buttonCall.Text.Contains("All in") == false || this.buttonRaise.Text.Contains("All in") == false)
                     {
                         this.bools.RemoveAt(0);
                         this.bools.Insert(0, null);
@@ -548,14 +554,15 @@
                 }
 
                 await this.CheckRaise(0, 0);
-                this.pbTimer.Visible = false;
-                this.bRaise.Enabled = false;
-                this.bCall.Enabled = false;
-                this.bRaise.Enabled = false;
-                this.bRaise.Enabled = false;
-                this.bFold.Enabled = false;
+                this.PlayerTurnTimer.Visible = false;
+                this.buttonRaise.Enabled = false;
+                this.buttonCall.Enabled = false;
+                this.buttonRaise.Enabled = false;
+                this.buttonRaise.Enabled = false;
+                this.buttonFold.Enabled = false;
                 this.timer.Stop();
                 this.botOneTurn = true;
+
                 if (!this.botOneFinishedTurn)
                 {
                     if (this.botOneTurn)
@@ -601,8 +608,8 @@
                 {
                     if (this.botTwoTurn)
                     {
-                        this.FixCall(this.bot2Status, ref this.botTwoCall, ref this.botTwoRaise, 1);
-                        this.FixCall(this.bot2Status, ref this.botTwoCall, ref this.botTwoRaise, 2);
+                        this.FixCall(this.botTwoStatus, ref this.botTwoCall, ref this.botTwoRaise, 1);
+                        this.FixCall(this.botTwoStatus, ref this.botTwoCall, ref this.botTwoRaise, 2);
                         this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
 
                         // TODO replace the text with constants
@@ -613,7 +620,7 @@
                             ref this.botTwoChips, 
                             ref this.botTwoTurn, 
                             ref this.botTwoFinishedTurn, 
-                            this.bot2Status, 
+                            this.botTwoStatus, 
                             1, 
                             this.botTwoPower, 
                             this.botTwoType);
@@ -642,8 +649,8 @@
                 {
                     if (this.botThreeTurn)
                     {
-                        this.FixCall(this.bot3Status, ref this.botThreeCall, ref this.botThreeRaise, 1);
-                        this.FixCall(this.bot3Status, ref this.botThreeCall, ref this.botThreeRaise, 2);
+                        this.FixCall(this.botThreeStatus, ref this.botThreeCall, ref this.botThreeRaise, 1);
+                        this.FixCall(this.botThreeStatus, ref this.botThreeCall, ref this.botThreeRaise, 2);
                         this.Rules(
                             6, 
                             7, 
@@ -660,7 +667,7 @@
                             ref this.botThreeChips, 
                             ref this.botThreeTurn, 
                             ref this.botThreeFinishedTurn, 
-                            this.bot3Status, 
+                            this.botThreeStatus, 
                             2, 
                             this.botThreePower, 
                             this.botThreeType);
@@ -689,8 +696,8 @@
                 {
                     if (this.botFourTurn)
                     {
-                        this.FixCall(this.bot4Status, ref this.botFourCall, ref this.botFourRaise, 1);
-                        this.FixCall(this.bot4Status, ref this.botFourCall, ref this.botFourRaise, 2);
+                        this.FixCall(this.botFourStatus, ref this.botFourCall, ref this.botFourRaise, 1);
+                        this.FixCall(this.botFourStatus, ref this.botFourCall, ref this.botFourRaise, 2);
                         this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
 
                         // TODO replace the text with constants
@@ -701,7 +708,7 @@
                             ref this.botFourChips, 
                             ref this.botFourTurn, 
                             ref this.botFourFinishedTurn, 
-                            this.bot4Status, 
+                            this.botFourStatus, 
                             3, 
                             this.botFourPower, 
                             this.botFourType);
@@ -730,8 +737,8 @@
                 {
                     if (this.botFiveTurn)
                     {
-                        this.FixCall(this.bot5Status, ref this.botFiveCall, ref this.botFiveRaise, 1);
-                        this.FixCall(this.bot5Status, ref this.botFiveCall, ref this.botFiveRaise, 2);
+                        this.FixCall(this.botFiveStatus, ref this.botFiveCall, ref this.botFiveRaise, 1);
+                        this.FixCall(this.botFiveStatus, ref this.botFiveCall, ref this.botFiveRaise, 2);
                         this.Rules(
                             10, 
                             11, 
@@ -748,7 +755,7 @@
                             ref this.botFiveChips, 
                             ref this.botFiveTurn, 
                             ref this.botFiveFinishedTurn, 
-                            this.bot5Status, 
+                            this.botFiveStatus, 
                             4, 
                             this.botFivePower, 
                             this.botFiveType);
@@ -774,7 +781,7 @@
 
                 if (this.playerFinishedHisTurn && !this.playerFolded)
                 {
-                    if (this.bCall.Text.Contains("All in") == false || this.bRaise.Text.Contains("All in") == false)
+                    if (this.buttonCall.Text.Contains("All in") == false || this.buttonRaise.Text.Contains("All in") == false)
                     {
                         this.bools.RemoveAt(0);
                         this.bools.Insert(0, null);
@@ -816,15 +823,15 @@
                 var b = Straight.Where(o => o % 4 == 1).ToArray();
                 var c = Straight.Where(o => o % 4 == 2).ToArray();
                 var d = Straight.Where(o => o % 4 == 3).ToArray();
-                var st1 = a.Select(o => o / 4).Distinct().ToArray();
-                var st2 = b.Select(o => o / 4).Distinct().ToArray();
-                var st3 = c.Select(o => o / 4).Distinct().ToArray();
-                var st4 = d.Select(o => o / 4).Distinct().ToArray();
+                var straightOne = a.Select(o => o / 4).Distinct().ToArray();
+                var straightTwo = b.Select(o => o / 4).Distinct().ToArray();
+                var straightThree = c.Select(o => o / 4).Distinct().ToArray();
+                var straightFour = d.Select(o => o / 4).Distinct().ToArray();
                 Array.Sort(Straight);
-                Array.Sort(st1);
-                Array.Sort(st2);
-                Array.Sort(st3);
-                Array.Sort(st4);
+                Array.Sort(straightOne);
+                Array.Sort(straightTwo);
+                Array.Sort(straightThree);
+                Array.Sort(straightFour);
 
                 for (this.i = 0; this.i < 16; this.i++)
                 {
@@ -869,7 +876,7 @@
 
                         #region Straight Flush current = 8 || 9
 
-                        this.RStraightFlush(ref current, ref power, st1, st2, st3, st4);
+                        this.RStraightFlush(ref current, ref power, straightOne, straightTwo, straightThree, straightFour);
 
                         #endregion
 
@@ -883,116 +890,115 @@
             }
         }
 
-        private void RStraightFlush(ref double current, ref double power, int[] st1, int[] st2, int[] st3, int[] st4)
+        private void RStraightFlush(ref double currentHand, ref double power, int[] straightSpades, int[] straightClubs, int[] straightDiamonds, int[] straightHearts)
         {
-            if (current >= -1)
+            if (currentHand >= -1)
             {
-                if (st1.Length >= 5)
+                if (straightSpades.Length >= 5)
                 {
-                    if (st1[0] + 4 == st1[4])
+                    if (straightSpades[0] + 4 == straightSpades[4])
                     {
-                        current = 8;
-                        power = st1.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 8 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        currentHand = 8;
+                        power = straightSpades.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 8 });
+                        this.sorted = this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
 
-                    if (st1[0] == 0 && st1[1] == 9 && st1[2] == 10 && st1[3] == 11 && st1[0] + 12 == st1[4])
+                    if (straightSpades[0] == 0 && straightSpades[1] == 9 && straightSpades[2] == 10 && straightSpades[3] == 11 && straightSpades[0] + 12 == straightSpades[4])
                     {
-                        current = 9;
-                        power = st1.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 9 });
+                        currentHand = 9;
+                        power = straightSpades.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 9 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
                 }
 
-                if (st2.Length >= 5)
+                if (straightClubs.Length >= 5)
                 {
-                    if (st2[0] + 4 == st2[4])
+                    if (straightClubs[0] + 4 == straightClubs[4])
                     {
-                        current = 8;
-                        power = st2.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 8 });
+                        currentHand = 8;
+                        power = straightClubs.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 8 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
 
-                    if (st2[0] == 0 && st2[1] == 9 && st2[2] == 10 && st2[3] == 11 && st2[0] + 12 == st2[4])
+                    if (straightClubs[0] == 0 && straightClubs[1] == 9 && straightClubs[2] == 10 && straightClubs[3] == 11 && straightClubs[0] + 12 == straightClubs[4])
                     {
-                        current = 9;
-                        power = st2.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 9 });
+                        currentHand = 9;
+                        power = straightClubs.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 9 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
                 }
 
-                if (st3.Length >= 5)
+                if (straightDiamonds.Length >= 5)
                 {
-                    if (st3[0] + 4 == st3[4])
+                    if (straightDiamonds[0] + 4 == straightDiamonds[4])
                     {
-                        current = 8;
-                        power = st3.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 8 });
+                        currentHand = 8;
+                        power = straightDiamonds.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 8 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
 
-                    if (st3[0] == 0 && st3[1] == 9 && st3[2] == 10 && st3[3] == 11 && st3[0] + 12 == st3[4])
+                    if (straightDiamonds[0] == 0 && straightDiamonds[1] == 9 && straightDiamonds[2] == 10 && straightDiamonds[3] == 11 && straightDiamonds[0] + 12 == straightDiamonds[4])
                     {
-                        current = 9;
-                        power = st3.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 9 });
+                        currentHand = 9;
+                        power = straightDiamonds.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 9 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
                 }
 
-                if (st4.Length >= 5)
+                if (straightHearts.Length >= 5)
                 {
-                    if (st4[0] + 4 == st4[4])
+                    if (straightHearts[0] + 4 == straightHearts[4])
                     {
-                        current = 8;
-                        power = st4.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 8 });
+                        currentHand = 8;
+                        power = straightHearts.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 8 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
 
-                    if (st4[0] == 0 && st4[1] == 9 && st4[2] == 10 && st4[3] == 11 && st4[0] + 12 == st4[4])
+                    if (straightHearts[0] == 0 && straightHearts[1] == 9 && straightHearts[2] == 10 && straightHearts[3] == 11 && straightHearts[0] + 12 == straightHearts[4])
                     {
-                        current = 9;
-                        power = st4.Max() / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 9 });
+                        currentHand = 9;
+                        power = straightHearts.Max() / 4 + currentHand * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 9 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
                 }
             }
         }
 
-        private void RFourOfAKind(ref double current, ref double power, IReadOnlyList<int> straight)
+        private void RFourOfAKind(ref double current, ref double power, IReadOnlyList<int> handCards)
         {
             if (current >= -1)
             {
-                for (var j = 0; j <= 3; j++)
+                for (var cardsIndex = 0; cardsIndex <= 3; cardsIndex++)
                 {
-                    if (straight[j] / 4 == straight[j + 1] / 4 && straight[j] / 4 == straight[j + 2] / 4
-                        && straight[j] / 4 == straight[j + 3] / 4)
+                    if (handCards[cardsIndex] / 4 == handCards[cardsIndex + 1] / 4 && handCards[cardsIndex] / 4 == handCards[cardsIndex + 2] / 4
+                        && handCards[cardsIndex] / 4 == handCards[cardsIndex + 3] / 4)
                     {
                         current = 7;
 
                         // TODO group conditions and put parenthesis
-                        power = (straight[j] / 4) * 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 7 });
+                        power = (handCards[cardsIndex] / 4) * 4 + current * 100;
+                        this.win.Add(new Type() { Power = power, CurrentHand = 7 });
                         this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                            this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                     }
 
-                    if (straight[j] / 4 != 0 || straight[j + 1] / 4 != 0 || straight[j + 2] / 4 != 0
-                        || straight[j + 3] / 4 != 0)
+                    if (handCards[cardsIndex] / 4 != 0 || handCards[cardsIndex + 1] / 4 != 0 || handCards[cardsIndex + 2] / 4 != 0
+                        || handCards[cardsIndex + 3] / 4 != 0)
                     {
                         continue;
                     }
@@ -1001,14 +1007,14 @@
 
                     // TODO group conditions and put parenthesis
                     power = 13 * 4 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 7 });
+                    this.win.Add(new Type() { Power = power, CurrentHand = 7 });
                     this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                 }
             }
         }
 
-        private void RFullHouse(ref double current, ref double power, ref bool done, int[] straight)
+        private void RFullHouse(ref double current, ref double power, ref bool done, int[] handCards)
         {
             if (!(current >= -1))
             {
@@ -1018,7 +1024,7 @@
             this.type = power;
             for (var j = 0; j <= 12; j++)
             {
-                var fh = straight.Where(o => o / 4 == j).ToArray();
+                var fh = handCards.Where(o => o / 4 == j).ToArray();
                 if (fh.Length == 3 || done)
                 {
                     if (fh.Length == 2)
@@ -1029,9 +1035,9 @@
 
                             // TODO group conditions and put parenthesis, replace magic numbers
                             power = 13 * 2 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 6 });
+                            this.win.Add(new Type() { Power = power, CurrentHand = 6 });
                             this.sorted =
-                                this.win.OrderByDescending(op1 => op1.Current)
+                                this.win.OrderByDescending(op1 => op1.CurrentHand)
                                     .ThenByDescending(op1 => op1.Power)
                                     .First();
                             break;
@@ -1043,10 +1049,10 @@
 
                             // TODO group conditions and put parenthesis, replace magic numbers
                             power = fh.Max() / 4 * 2 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 6 });
+                            this.win.Add(new Type() { Power = power, CurrentHand = 6 });
                             this.sorted =
-                                this.win.OrderByDescending(op1 => op1.Current)
-                                    .ThenByDescending(op1 => op1.Power)
+                                this.win.OrderByDescending(cards => cards.CurrentHand)
+                                    .ThenByDescending(cards => cards.Power)
                                     .First();
                             break;
                         }
@@ -1078,74 +1084,84 @@
             }
         }
 
-        private void RFlush(ref double current, ref double power, ref bool vf, int[] straight)
+        private void RFlush(ref double current, ref double powerOfHand, ref bool vf, int[] handCards)
         {
             if (!(current >= -1))
             {
                 return;
             }
 
-            var f1 = straight.Where(o => o % 4 == 0).ToArray();
-            var f2 = straight.Where(o => o % 4 == 1).ToArray();
-            var f3 = straight.Where(o => o % 4 == 2).ToArray();
-            var f4 = straight.Where(o => o % 4 == 3).ToArray();
-            if (f1.Length == 3 || f1.Length == 4)
+            var flushHearts = handCards.Where(o => o % 4 == 0).ToArray();
+            var flushClubs = handCards.Where(o => o % 4 == 1).ToArray();
+            var flushDiamonds = handCards.Where(o => o % 4 == 2).ToArray();
+            var flushSpades = handCards.Where(o => o % 4 == 3).ToArray();
+
+            if (flushHearts.Length == 3 || flushHearts.Length == 4)
             {
-                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f1[0] % 4)
+                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushHearts[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f1.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushHearts.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                          .OrderByDescending(cards => cards.CurrentHand)
+                                          .ThenByDescending(cards => cards.Power)
+                                          .First();
                         vf = true;
                     }
 
-                    if (this.reserve[this.i + 1] / 4 > f1.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushHearts.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                               .OrderByDescending(cards => cards.CurrentHand)
+                               .ThenByDescending(cards => cards.Power)
+                               .First();
                         vf = true;
                     }
-                    else if (this.reserve[this.i] / 4 < f1.Max() / 4 && this.reserve[this.i + 1] / 4 < f1.Max() / 4)
+
+                    else if (this.reserve[this.i] / 4 < flushHearts.Max() / 4 && this.reserve[this.i + 1] / 4 < flushHearts.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f1.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushHearts.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                 }
             }
 
-            if (f1.Length == 4)
+            if (flushHearts.Length == 4)
             {
                 // different cards in hand
-                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f1[0] % 4)
+                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushHearts[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f1.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushHearts.Max() / 4)
                     {
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
                         current = 5;
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                     else
@@ -1154,27 +1170,31 @@
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f1.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushHearts.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                 }
 
                 if (this.reserve[this.i + 1] % 4 != this.reserve[this.i] % 4
-                    && this.reserve[this.i + 1] % 4 == f1[0] % 4)
+                    && this.reserve[this.i + 1] % 4 == flushHearts[0] % 4)
                 {
-                    if (this.reserve[this.i + 1] / 4 > f1.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushHearts.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                     else
@@ -1183,115 +1203,132 @@
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f1.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushHearts.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                 }
             }
 
-            if (f1.Length == 5)
+            if (flushHearts.Length == 5)
             {
-                if (this.reserve[this.i] % 4 == f1[0] % 4 && this.reserve[this.i] / 4 > f1.Min() / 4)
+                if (this.reserve[this.i] % 4 == flushHearts[0] % 4 && this.reserve[this.i] / 4 > flushHearts.Min() / 4)
                 {
                     current = 5;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    power = this.reserve[this.i] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                     vf = true;
                 }
 
-                if (this.reserve[this.i + 1] % 4 == f1[0] % 4 && this.reserve[this.i + 1] / 4 > f1.Min() / 4)
+                if (this.reserve[this.i + 1] % 4 == flushHearts[0] % 4 && this.reserve[this.i + 1] / 4 > flushHearts.Min() / 4)
                 {
                     current = 5;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    power = this.reserve[this.i + 1] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i + 1] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                     vf = true;
                 }
-                else if (this.reserve[this.i] / 4 < f1.Min() / 4 && this.reserve[this.i + 1] / 4 < f1.Min())
+
+                else if (this.reserve[this.i] / 4 < flushHearts.Min() / 4 && this.reserve[this.i + 1] / 4 < flushHearts.Min()) // Put theese in the brackets in variables
                 {
                     current = 5;
-                    power = f1.Max() + current * 100;
+                    powerOfHand = flushHearts.Max() + current * 100;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                     vf = true;
                 }
             }
 
-            if (f2.Length == 3 || f2.Length == 4)
+            if (flushClubs.Length == 3 || flushClubs.Length == 4)
             {
-                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f2[0] % 4)
+                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushClubs[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f2.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushClubs.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
 
-                    if (this.reserve[this.i + 1] / 4 > f2.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushClubs.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
-                    else if (this.reserve[this.i] / 4 < f2.Max() / 4 && this.reserve[this.i + 1] / 4 < f2.Max() / 4)
+                    else if (this.reserve[this.i] / 4 < flushClubs.Max() / 4 && this.reserve[this.i + 1] / 4 < flushClubs.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f2.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushClubs.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                 }
             }
 
-            if (f2.Length == 4)
+            if (flushClubs.Length == 4)
             {
                 // different cards in hand
-                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f2[0] % 4)
+                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushClubs[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f2.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushClubs.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                                .OrderByDescending(cards => cards.CurrentHand)
+                                .ThenByDescending(cards => cards.Power)
+                                .First();
                         vf = true;
                     }
                     else
@@ -1300,27 +1337,31 @@
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f2.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushClubs.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
 
                 if (this.reserve[this.i + 1] % 4 != this.reserve[this.i] % 4
-                    && this.reserve[this.i + 1] % 4 == f2[0] % 4)
+                    && this.reserve[this.i + 1] % 4 == flushClubs[0] % 4)
                 {
-                    if (this.reserve[this.i + 1] / 4 > f2.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushClubs.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                     else
@@ -1329,151 +1370,173 @@
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f2.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushClubs.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
             }
 
-            if (f2.Length == 5)
+            if (flushClubs.Length == 5)
             {
-                if (this.reserve[this.i] % 4 == f2[0] % 4 && this.reserve[this.i] / 4 > f2.Min() / 4)
+                if (this.reserve[this.i] % 4 == flushClubs[0] % 4 && this.reserve[this.i] / 4 > flushClubs.Min() / 4)
                 {
                     current = 5;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    power = this.reserve[this.i] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
 
-                if (this.reserve[this.i + 1] % 4 == f2[0] % 4 && this.reserve[this.i + 1] / 4 > f2.Min() / 4)
+                if (this.reserve[this.i + 1] % 4 == flushClubs[0] % 4 && this.reserve[this.i + 1] / 4 > flushClubs.Min() / 4)
                 {
                     current = 5;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    power = this.reserve[this.i + 1] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i + 1] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
-                else if (this.reserve[this.i] / 4 < f2.Min() / 4 && this.reserve[this.i + 1] / 4 < f2.Min())
+                else if (this.reserve[this.i] / 4 < flushClubs.Min() / 4 && this.reserve[this.i + 1] / 4 < flushClubs.Min())
                 {
                     current = 5;
 
                     // TODO group conditions and put parenthesis, replace magic numbers
                     // TODO Code repetition - Create method and put it here
-                    power = f2.Max() + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = flushClubs.Max() + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
             }
 
-            if (f3.Length == 3 || f3.Length == 4)
+            if (flushDiamonds.Length == 3 || flushDiamonds.Length == 4)
             {
-                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f3[0] % 4)
+                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushDiamonds[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f3.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushDiamonds.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
 
-                    if (this.reserve[this.i + 1] / 4 > f3.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushDiamonds.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
-                    else if (this.reserve[this.i] / 4 < f3.Max() / 4 && this.reserve[this.i + 1] / 4 < f3.Max() / 4)
+                    else if (this.reserve[this.i] / 4 < flushDiamonds.Max() / 4 && this.reserve[this.i + 1] / 4 < flushDiamonds.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = f3.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushDiamonds.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
             }
 
-            if (f3.Length == 4)
+            if (flushDiamonds.Length == 4)
             {
                 // different cards in hand
-                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f3[0] % 4)
+                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushDiamonds[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f3.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushDiamonds.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                     else
                     {
                         current = 5;
 
-                        power = f3.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushDiamonds.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
 
                 if (this.reserve[this.i + 1] % 4 != this.reserve[this.i] % 4
-                    && this.reserve[this.i + 1] % 4 == f3[0] % 4)
+                    && this.reserve[this.i + 1] % 4 == flushDiamonds[0] % 4)
                 {
-                    if (this.reserve[this.i + 1] / 4 > f3.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushDiamonds.Max() / 4)
                     {
                         current = 5;
 
                         // TODO group conditions and put parenthesis, replace magic numbers
                         // TODO Code repetition - Create method and put it here
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                     else
                     {
                         current = 5;
-                        power = f3.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushDiamonds.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
@@ -1481,70 +1544,82 @@
 
             // TODO group conditions and put parenthesis, replace magic numbers
             // TODO Code repetition - Create method and put it here
-            if (f3.Length == 5)
+            if (flushDiamonds.Length == 5)
             {
-                if (this.reserve[this.i] % 4 == f3[0] % 4 && this.reserve[this.i] / 4 > f3.Min() / 4)
+                if (this.reserve[this.i] % 4 == flushDiamonds[0] % 4 && this.reserve[this.i] / 4 > flushDiamonds.Min() / 4)
                 {
                     current = 5;
-                    power = this.reserve[this.i] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
 
-                if (this.reserve[this.i + 1] % 4 == f3[0] % 4 && this.reserve[this.i + 1] / 4 > f3.Min() / 4)
+                if (this.reserve[this.i + 1] % 4 == flushDiamonds[0] % 4 && this.reserve[this.i + 1] / 4 > flushDiamonds.Min() / 4)
                 {
                     current = 5;
-                    power = this.reserve[this.i + 1] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i + 1] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
-                else if (this.reserve[this.i] / 4 < f3.Min() / 4 && this.reserve[this.i + 1] / 4 < f3.Min())
+                else if (this.reserve[this.i] / 4 < flushDiamonds.Min() / 4 && this.reserve[this.i + 1] / 4 < flushDiamonds.Min())
                 {
                     current = 5;
-                    power = f3.Max() + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = flushDiamonds.Max() + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
             }
 
             // TODO group conditions and put parenthesis, replace magic numbers
             // TODO Code repetition - Create method and put it here
-            if (f4.Length == 3 || f4.Length == 4)
+            if (flushSpades.Length == 3 || flushSpades.Length == 4)
             {
-                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f4[0] % 4)
+                if (this.reserve[this.i] % 4 == this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushSpades[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f4.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushSpades.Max() / 4)
                     {
                         current = 5;
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
 
-                    if (this.reserve[this.i + 1] / 4 > f4.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushSpades.Max() / 4)
                     {
                         current = 5;
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
-                    else if (this.reserve[this.i] / 4 < f4.Max() / 4 && this.reserve[this.i + 1] / 4 < f4.Max() / 4)
+                    else if (this.reserve[this.i] / 4 < flushSpades.Max() / 4 && this.reserve[this.i + 1] / 4 < flushSpades.Max() / 4)
                     {
                         current = 5;
-                        power = f4.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushSpades.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
@@ -1552,27 +1627,31 @@
 
             // TODO group conditions and put parenthesis, replace magic numbers
             // TODO Code repetition - Create method and put it here
-            if (f4.Length == 4)
+            if (flushSpades.Length == 4)
             {
                 // different cards in hand
-                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == f4[0] % 4)
+                if (this.reserve[this.i] % 4 != this.reserve[this.i + 1] % 4 && this.reserve[this.i] % 4 == flushSpades[0] % 4)
                 {
-                    if (this.reserve[this.i] / 4 > f4.Max() / 4)
+                    if (this.reserve[this.i] / 4 > flushSpades.Max() / 4)
                     {
                         current = 5;
-                        power = this.reserve[this.i] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                     else
                     {
                         current = 5;
-                        power = f4.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushSpades.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
@@ -1580,24 +1659,28 @@
                 // TODO group conditions and put parenthesis, replace magic numbers
                 // TODO Code repetition - Create method and put it here
                 if (this.reserve[this.i + 1] % 4 != this.reserve[this.i] % 4
-                    && this.reserve[this.i + 1] % 4 == f4[0] % 4)
+                    && this.reserve[this.i + 1] % 4 == flushSpades[0] % 4)
                 {
-                    if (this.reserve[this.i + 1] / 4 > f4.Max() / 4)
+                    if (this.reserve[this.i + 1] / 4 > flushSpades.Max() / 4)
                     {
                         current = 5;
-                        power = this.reserve[this.i + 1] + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = this.reserve[this.i + 1] + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                     else
                     {
                         current = 5;
-                        power = f4.Max() + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 5 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        powerOfHand = flushSpades.Max() + current * 100;
+                        this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                        this.sorted = this.win
+                            .OrderByDescending(cards => cards.CurrentHand)
+                            .ThenByDescending(cards => cards.Power)
+                            .First();
                         vf = true;
                     }
                 }
@@ -1605,34 +1688,40 @@
 
             // TODO group conditions and put parenthesis, replace magic numbers
             // TODO Code repetition - Create method and put it here
-            if (f4.Length == 5)
+            if (flushSpades.Length == 5)
             {
-                if (this.reserve[this.i] % 4 == f4[0] % 4 && this.reserve[this.i] / 4 > f4.Min() / 4)
+                if (this.reserve[this.i] % 4 == flushSpades[0] % 4 && this.reserve[this.i] / 4 > flushSpades.Min() / 4)
                 {
                     current = 5;
-                    power = this.reserve[this.i] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
 
-                if (this.reserve[this.i + 1] % 4 == f4[0] % 4 && this.reserve[this.i + 1] / 4 > f4.Min() / 4)
+                if (this.reserve[this.i + 1] % 4 == flushSpades[0] % 4 && this.reserve[this.i + 1] / 4 > flushSpades.Min() / 4)
                 {
                     current = 5;
-                    power = this.reserve[this.i + 1] + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = this.reserve[this.i + 1] + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
-                else if (this.reserve[this.i] / 4 < f4.Min() / 4 && this.reserve[this.i + 1] / 4 < f4.Min())
+                else if (this.reserve[this.i] / 4 < flushSpades.Min() / 4 && this.reserve[this.i + 1] / 4 < flushSpades.Min())
                 {
                     current = 5;
-                    power = f4.Max() + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = flushSpades.Max() + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                     vf = true;
                 }
             }
@@ -1640,134 +1729,154 @@
             // ace
             // TODO group conditions and put parenthesis, replace magic numbers
             // TODO Code repetition - Create method and put it here
-            if (f1.Length > 0)
+            if (flushHearts.Length > 0)
             {
-                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == f1[0] % 4 && vf && f1.Length > 0)
+                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == flushHearts[0] % 4 && vf && flushHearts.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
 
-                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == f1[0] % 4 && vf
-                    && f1.Length > 0)
+                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == flushHearts[0] % 4 && vf
+                    && flushHearts.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
             }
 
-            if (f2.Length > 0)
+            if (flushClubs.Length > 0)
             {
-                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == f2[0] % 4 && vf && f2.Length > 0)
+                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == flushClubs[0] % 4 && vf && flushClubs.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
 
-                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == f2[0] % 4 && vf
-                    && f2.Length > 0)
+                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == flushClubs[0] % 4 && vf
+                    && flushClubs.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
             }
 
-            if (f3.Length > 0)
+            if (flushDiamonds.Length > 0)
             {
-                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == f3[0] % 4 && vf && f3.Length > 0)
+                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == flushDiamonds[0] % 4 && vf && flushDiamonds.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
 
-                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == f3[0] % 4 && vf
-                    && f3.Length > 0)
+                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == flushDiamonds[0] % 4 && vf
+                    && flushDiamonds.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
             }
 
-            if (f4.Length > 0)
+            if (flushSpades.Length > 0)
             {
-                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == f4[0] % 4 && vf && f4.Length > 0)
+                if (this.reserve[this.i] / 4 == 0 && this.reserve[this.i] % 4 == flushSpades[0] % 4 && vf && flushSpades.Length > 0)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
 
-                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == f4[0] % 4 && vf)
+                if (this.reserve[this.i + 1] / 4 == 0 && this.reserve[this.i + 1] % 4 == flushSpades[0] % 4 && vf)
                 {
                     current = 5.5;
-                    power = 13 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 5.5 });
-                    this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                    powerOfHand = 13 + current * 100;
+                    this.win.Add(new Type() { Power = powerOfHand, CurrentHand = 5.5 });
+                    this.sorted = this.win
+                        .OrderByDescending(cards => cards.CurrentHand)
+                        .ThenByDescending(cards => cards.Power)
+                        .First();
                 }
             }
         }
-
+        
         // TODO group conditions and put parenthesis, replace magic numbers
         // TODO Code repetition - Create method and put it here
-        private void RStraight(ref double current, ref double power, int[] straight)
+        // Straight is hand with distinct cards - 2,3,4,5,6,7...
+        private void RStraight(ref double current, ref double power, int[] handCards)
         {
             if (current >= -1)
             {
-                var op = straight.Select(o => o / 4).Distinct().ToArray();
-                for (var j = 0; j < op.Length - 4; j++)
+                var distinctCards = handCards.Select(o => o / 4).Distinct().ToArray();
+                for (var j = 0; j < distinctCards.Length - 4; j++)
                 {
-                    if (op[j] + 4 == op[j + 4])
+                    if (distinctCards[j] + 4 == distinctCards[j + 4])
                     {
-                        if (op.Max() - 4 == op[j])
+                        if (distinctCards.Max() - 4 == distinctCards[j])
                         {
                             current = 4;
-                            power = op.Max() + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 4 });
+                            power = distinctCards.Max() + current * 100;
+                            this.win.Add(new Type() { Power = power, CurrentHand = 4 });
                             this.sorted =
-                                this.win.OrderByDescending(op1 => op1.Current)
+                                this.win.OrderByDescending(op1 => op1.CurrentHand)
                                     .ThenByDescending(op1 => op1.Power)
                                     .First();
                         }
                         else
                         {
                             current = 4;
-                            power = op[j + 4] + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 4 });
+                            power = distinctCards[j + 4] + current * 100;
+                            this.win.Add(new Type() { Power = power, CurrentHand = 4 });
                             this.sorted =
-                                this.win.OrderByDescending(op1 => op1.Current)
+                                this.win.OrderByDescending(op1 => op1.CurrentHand)
                                     .ThenByDescending(op1 => op1.Power)
                                     .First();
                         }
                     }
 
-                    if (op[j] == 0 && op[j + 1] == 9 && op[j + 2] == 10 && op[j + 3] == 11 && op[j + 4] == 12)
+                    if (distinctCards[j] == 0 && distinctCards[j + 1] == 9 && distinctCards[j + 2] == 10 
+                        && distinctCards[j + 3] == 11 && distinctCards[j + 4] == 12)
                     {
                         current = 4;
                         power = 13 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 4 });
-                        this.sorted =
-                            this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        this.win.Add(new Type() { Power = power, CurrentHand = 4 });
+                        this.sorted = this.win
+                            .OrderByDescending(op1 => op1.CurrentHand)
+                            .ThenByDescending(op1 => op1.Power)
+                            .First();
                     }
                 }
             }
@@ -1775,30 +1884,35 @@
 
         // TODO group conditions and put parenthesis, replace magic numbers
         // TODO Code repetition - Create method and put it here
-        private void RThreeOfAKind(ref double current, ref double power, int[] straight)
+        private void RThreeOfAKind(ref double current, ref double power, int[] handCards)
         {
             if (current >= -1)
             {
+                // j <= 12 because there are 13 possible situation(2,3,4,5,6,7,8,9,10,J,Q,K,A)
                 for (var j = 0; j <= 12; j++)
                 {
-                    var fh = straight.Where(o => o / 4 == j).ToArray();
+                    var fh = handCards.Where(o => o / 4 == j).ToArray();
                     if (fh.Length == 3)
                     {
                         if (fh.Max() / 4 == 0)
                         {
                             current = 3;
                             power = 13 * 3 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 3 });
-                            this.sorted =
-                                this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                            this.win.Add(new Type() { Power = power, CurrentHand = 3 });
+                            this.sorted = this.win
+                                .OrderByDescending(op => op.CurrentHand)
+                                .ThenByDescending(op => op.Power)
+                                .First();
                         }
                         else
                         {
                             current = 3;
                             power = fh[0] / 4 + fh[1] / 4 + fh[2] / 4 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 3 });
-                            this.sorted =
-                                this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                            this.win.Add(new Type() { Power = power, CurrentHand = 3 });
+                            this.sorted = this.win
+                                .OrderByDescending(op => op.CurrentHand)
+                                .ThenByDescending(op => op.Power)
+                                .First();
                         }
                     }
                 }
@@ -1847,9 +1961,9 @@
                             {
                                 current = 2;
                                 power = 13 * 4 + (this.reserve[this.i + 1] / 4) * 2 + current * 100;
-                                this.win.Add(new Type() { Power = power, Current = 2 });
+                                this.win.Add(new Type() { Power = power, CurrentHand = 2 });
                                 this.sorted =
-                                    this.win.OrderByDescending(op => op.Current)
+                                    this.win.OrderByDescending(op => op.CurrentHand)
                                         .ThenByDescending(op => op.Power)
                                         .First();
                             }
@@ -1858,9 +1972,9 @@
                             {
                                 current = 2;
                                 power = 13 * 4 + (this.reserve[this.i] / 4) * 2 + current * 100;
-                                this.win.Add(new Type() { Power = power, Current = 2 });
-                                this.sorted =
-                                    this.win.OrderByDescending(op => op.Current)
+                                this.win.Add(new Type() { Power = power, CurrentHand = 2 });
+                                this.sorted = this.win
+                                        .OrderByDescending(op => op.CurrentHand)
                                         .ThenByDescending(op => op.Power)
                                         .First();
                             }
@@ -1870,11 +1984,11 @@
                                 current = 2;
                                 power = (this.reserve[this.i] / 4) * 2 + (this.reserve[this.i + 1] / 4) * 2
                                         + current * 100;
-                                this.win.Add(new Type() { Power = power, Current = 2 });
-                                this.sorted =
-                                    this.win.OrderByDescending(op => op.Current)
-                                        .ThenByDescending(op => op.Power)
-                                        .First();
+                                this.win.Add(new Type() { Power = power, CurrentHand = 2 });
+                                this.sorted = this.win
+                                    .OrderByDescending(op => op.CurrentHand)
+                                    .ThenByDescending(op => op.Power)
+                                    .First();
                             }
                         }
 
@@ -1915,9 +2029,9 @@
                                         {
                                             current = 2;
                                             power = (this.reserve[this.i] / 4) * 2 + 13 * 4 + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 2 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 2 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1926,9 +2040,9 @@
                                         {
                                             current = 2;
                                             power = (this.reserve[this.i + 1] / 4) * 2 + 13 * 4 + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 2 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 2 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1938,9 +2052,9 @@
                                             current = 2;
                                             power = (this.reserve[tc] / 4) * 2 + (this.reserve[this.i + 1] / 4) * 2
                                                     + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 2 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 2 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1950,9 +2064,9 @@
                                             current = 2;
                                             power = (this.reserve[tc] / 4) * 2 + (this.reserve[this.i] / 4) * 2
                                                     + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 2 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 2 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1974,9 +2088,9 @@
                                         {
                                             current = 0;
                                             power = 13 + this.reserve[this.i] / 4 + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 1 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1984,9 +2098,9 @@
                                         {
                                             current = 0;
                                             power = this.reserve[tc] / 4 + this.reserve[this.i] / 4 + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 1 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -1997,9 +2111,9 @@
                                         {
                                             current = 0;
                                             power = 13 + this.reserve[this.i + 1] + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 1 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -2007,9 +2121,9 @@
                                         {
                                             current = 0;
                                             power = this.reserve[tc] / 4 + this.reserve[this.i + 1] / 4 + current * 100;
-                                            this.win.Add(new Type() { Power = power, Current = 1 });
+                                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                                             this.sorted =
-                                                this.win.OrderByDescending(op => op.Current)
+                                                this.win.OrderByDescending(op => op.CurrentHand)
                                                     .ThenByDescending(op => op.Power)
                                                     .First();
                                         }
@@ -2040,15 +2154,15 @@
                 {
                     current = 1;
                     power = 13 * 4 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 1 });
-                    this.sorted = this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                    this.win.Add(new Type() { Power = power, CurrentHand = 1 });
+                    this.sorted = this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                 }
                 else
                 {
                     current = 1;
                     power = (this.reserve[this.i + 1] / 4) * 4 + current * 100;
-                    this.win.Add(new Type() { Power = power, Current = 1 });
-                    this.sorted = this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                    this.win.Add(new Type() { Power = power, CurrentHand = 1 });
+                    this.sorted = this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                 }
 
                 msgbox = true;
@@ -2064,17 +2178,17 @@
                         {
                             current = 1;
                             power = 13 * 4 + this.reserve[this.i] / 4 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 1 });
+                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                             this.sorted =
-                                this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                                this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                         }
                         else
                         {
                             current = 1;
                             power = (this.reserve[this.i + 1] / 4) * 4 + this.reserve[this.i] / 4 + current * 100;
-                            this.win.Add(new Type() { Power = power, Current = 1 });
+                            this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                             this.sorted =
-                                this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                                this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                         }
                     }
 
@@ -2092,17 +2206,17 @@
                     {
                         current = 1;
                         power = 13 * 4 + this.reserve[this.i + 1] / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 1 });
+                        this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                         this.sorted =
-                            this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                            this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                     }
                     else
                     {
                         current = 1;
                         power = (this.reserve[tc] / 4) * 4 + this.reserve[this.i + 1] / 4 + current * 100;
-                        this.win.Add(new Type() { Power = power, Current = 1 });
+                        this.win.Add(new Type() { Power = power, CurrentHand = 1 });
                         this.sorted =
-                            this.win.OrderByDescending(op => op.Current).ThenByDescending(op => op.Power).First();
+                            this.win.OrderByDescending(op => op.CurrentHand).ThenByDescending(op => op.Power).First();
                     }
                 }
 
@@ -2118,26 +2232,26 @@
                 {
                     current = -1;
                     Power = this.reserve[this.i] / 4;
-                    this.win.Add(new Type() { Power = Power, Current = -1 });
+                    this.win.Add(new Type() { Power = Power, CurrentHand = -1 });
                     this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                 }
                 else
                 {
                     current = -1;
                     Power = this.reserve[this.i + 1] / 4;
-                    this.win.Add(new Type() { Power = Power, Current = -1 });
+                    this.win.Add(new Type() { Power = Power, CurrentHand = -1 });
                     this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                 }
 
                 if (this.reserve[this.i] / 4 == 0 || this.reserve[this.i + 1] / 4 == 0)
                 {
                     current = -1;
                     Power = 13;
-                    this.win.Add(new Type() { Power = Power, Current = -1 });
+                    this.win.Add(new Type() { Power = Power, CurrentHand = -1 });
                     this.sorted =
-                        this.win.OrderByDescending(op1 => op1.Current).ThenByDescending(op1 => op1.Power).First();
+                        this.win.OrderByDescending(op1 => op1.CurrentHand).ThenByDescending(op1 => op1.Power).First();
                 }
             }
         }
@@ -2159,7 +2273,7 @@
             }
 
             // TODO Make a switch and replace the text with constants
-            if (Math.Abs(current - this.sorted.Current) < FloatingPointsTolerance)
+            if (Math.Abs(current - this.sorted.CurrentHand) < FloatingPointsTolerance)
             {
                 if (Math.Abs(power - this.sorted.Power) < FloatingPointsTolerance)
                 {
@@ -2228,48 +2342,48 @@
             {
                 if (this.checkWinners.Contains("Player"))
                 {
-                    this.playerChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbChips.Text = this.playerChips.ToString();
+                    this.playerChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChips.Text = this.playerChips.ToString();
 
                     // pPanel.Visible = true;
                 }
 
                 if (this.checkWinners.Contains("Bot 1"))
                 {
-                    this.botOneChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbBotChips1.Text = this.botOneChips.ToString();
+                    this.botOneChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChipsBot1.Text = this.botOneChips.ToString();
 
                     // b1Panel.Visible = true;
                 }
 
                 if (this.checkWinners.Contains("Bot 2"))
                 {
-                    this.botTwoChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbBotChips2.Text = this.botTwoChips.ToString();
+                    this.botTwoChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChipsBot2.Text = this.botTwoChips.ToString();
 
                     // b2Panel.Visible = true;
                 }
 
                 if (this.checkWinners.Contains("Bot 3"))
                 {
-                    this.botThreeChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbBotChips3.Text = this.botThreeChips.ToString();
+                    this.botThreeChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChipsBot3.Text = this.botThreeChips.ToString();
 
                     // b3Panel.Visible = true;
                 }
 
                 if (this.checkWinners.Contains("Bot 4"))
                 {
-                    this.botFourChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbBotChips4.Text = this.botFourChips.ToString();
+                    this.botFourChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChipsBot4.Text = this.botFourChips.ToString();
 
                     // b4Panel.Visible = true;
                 }
 
                 if (this.checkWinners.Contains("Bot 5"))
                 {
-                    this.botFiveChips += int.Parse(this.tbPot.Text) / this.winners;
-                    this.tbBotChips5.Text = this.botFiveChips.ToString();
+                    this.botFiveChips += int.Parse(this.tablePot.Text) / this.winners;
+                    this.tableChipsBot5.Text = this.botFiveChips.ToString();
 
                     // b5Panel.Visible = true;
                 }
@@ -2281,7 +2395,7 @@
             {
                 if (this.checkWinners.Contains("Player"))
                 {
-                    this.playerChips += int.Parse(this.tbPot.Text);
+                    this.playerChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // pPanel.Visible = true;
@@ -2289,7 +2403,7 @@
 
                 if (this.checkWinners.Contains("Bot 1"))
                 {
-                    this.botOneChips += int.Parse(this.tbPot.Text);
+                    this.botOneChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // b1Panel.Visible = true;
@@ -2297,7 +2411,7 @@
 
                 if (this.checkWinners.Contains("Bot 2"))
                 {
-                    this.botTwoChips += int.Parse(this.tbPot.Text);
+                    this.botTwoChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // b2Panel.Visible = true;
@@ -2305,7 +2419,7 @@
 
                 if (this.checkWinners.Contains("Bot 3"))
                 {
-                    this.botThreeChips += int.Parse(this.tbPot.Text);
+                    this.botThreeChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // b3Panel.Visible = true;
@@ -2313,7 +2427,7 @@
 
                 if (this.checkWinners.Contains("Bot 4"))
                 {
-                    this.botFourChips += int.Parse(this.tbPot.Text);
+                    this.botFourChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // b4Panel.Visible = true;
@@ -2321,7 +2435,7 @@
 
                 if (this.checkWinners.Contains("Bot 5"))
                 {
-                    this.botFiveChips += int.Parse(this.tbPot.Text);
+                    this.botFiveChips += int.Parse(this.tablePot.Text);
 
                     // await Finish(1);
                     // b5Panel.Visible = true;
@@ -2366,22 +2480,22 @@
 
                         if (!this.botTwoFinishedTurn)
                         {
-                            this.bot2Status.Text = string.Empty;
+                            this.botTwoStatus.Text = string.Empty;
                         }
 
                         if (!this.botThreeFinishedTurn)
                         {
-                            this.bot3Status.Text = string.Empty;
+                            this.botThreeStatus.Text = string.Empty;
                         }
 
                         if (!this.botFourFinishedTurn)
                         {
-                            this.bot4Status.Text = string.Empty;
+                            this.botFourStatus.Text = string.Empty;
                         }
 
                         if (!this.botFiveFinishedTurn)
                         {
-                            this.bot5Status.Text = string.Empty;
+                            this.botFiveStatus.Text = string.Empty;
                         }
                     }
                 }
@@ -2478,25 +2592,25 @@
                     this.Rules(2, 3, "Bot 1", ref this.botOneType, ref this.botOnePower, this.botOneFinishedTurn);
                 }
 
-                if (!this.bot2Status.Text.Contains("Fold"))
+                if (!this.botTwoStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 2";
                     this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
                 }
 
-                if (!this.bot3Status.Text.Contains("Fold"))
+                if (!this.botThreeStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 3";
                     this.Rules(6, 7, "Bot 3", ref this.botThreeType, ref this.botThreePower, this.botThreeFinishedTurn);
                 }
 
-                if (!this.bot4Status.Text.Contains("Fold"))
+                if (!this.botFourStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 4";
                     this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
                 }
 
-                if (!this.bot5Status.Text.Contains("Fold"))
+                if (!this.botFiveStatus.Text.Contains("Fold"))
                 {
                     fixedLast = "Bot 5";
                     this.Rules(10, 11, "Bot 5", ref this.botFiveType, ref this.botFivePower, this.botFiveFinishedTurn);
@@ -2530,12 +2644,12 @@
                         this.botFiveChips += f2.a;
                         this.playerFinishedHisTurn = false;
                         this.playerTurn = true;
-                        this.bRaise.Enabled = true;
-                        this.bFold.Enabled = true;
-                        this.bCheck.Enabled = true;
+                        this.buttonRaise.Enabled = true;
+                        this.buttonFold.Enabled = true;
+                        this.buttonCheck.Enabled = true;
 
                         // TODO move to resourse !
-                        this.bRaise.Text = "Raise";
+                        this.buttonRaise.Text = "Raise";
                     }
                 }
 
@@ -2580,7 +2694,7 @@
                 this.checkWinners.Clear();
                 this.winners = 0;
                 this.win.Clear();
-                this.sorted.Current = 0;
+                this.sorted.CurrentHand = 0;
                 this.sorted.Power = 0;
                 for (var os = 0; os < 17; os++)
                 {
@@ -2590,7 +2704,7 @@
                 }
 
                 // TODO move to const or resourse
-                this.tbPot.Text = "0";
+                this.tablePot.Text = "0";
                 this.playerStatus.Text = string.Empty;
                 await this.Shuffle();
                 await this.Turns();
@@ -2646,8 +2760,8 @@
             }
 
             this.call = 0;
-            this.bCall.Enabled = false;
-            this.bCall.Text = "Callisfuckedup";
+            this.buttonCall.Enabled = false;
+            this.buttonCall.Text = "Callisfuckedup";
         }
 
         private async Task AllIn()
@@ -2738,48 +2852,48 @@
                 var index = this.bools.IndexOf(false);
                 if (index == 0)
                 {
-                    this.playerChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.playerChips.ToString();
+                    this.playerChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.playerChips.ToString();
                     this.playerPanel.Visible = true;
                     MessageBox.Show("Player Wins");
                 }
 
                 if (index == 1)
                 {
-                    this.botOneChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.botOneChips.ToString();
+                    this.botOneChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.botOneChips.ToString();
                     this.botOnePanel.Visible = true;
                     MessageBox.Show("Bot 1 Wins");
                 }
 
                 if (index == 2)
                 {
-                    this.botTwoChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.botTwoChips.ToString();
+                    this.botTwoChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.botTwoChips.ToString();
                     this.botTwoPanel.Visible = true;
                     MessageBox.Show("Bot 2 Wins");
                 }
 
                 if (index == 3)
                 {
-                    this.botThreeChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.botThreeChips.ToString();
+                    this.botThreeChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.botThreeChips.ToString();
                     this.botThreePanel.Visible = true;
                     MessageBox.Show("Bot 3 Wins");
                 }
 
                 if (index == 4)
                 {
-                    this.botFourChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.botFourChips.ToString();
+                    this.botFourChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.botFourChips.ToString();
                     this.botFourPanel.Visible = true;
                     MessageBox.Show("Bot 4 Wins");
                 }
 
                 if (index == 5)
                 {
-                    this.botFiveChips += int.Parse(this.tbPot.Text);
-                    this.tbChips.Text = this.botFiveChips.ToString();
+                    this.botFiveChips += int.Parse(this.tablePot.Text);
+                    this.tableChips.Text = this.botFiveChips.ToString();
                     this.botFivePanel.Visible = true;
                     MessageBox.Show("Bot 5 Wins");
                 }
@@ -2878,18 +2992,18 @@
             this.checkWinners.Clear();
             this.ints.Clear();
             this.win.Clear();
-            this.sorted.Current = 0;
+            this.sorted.CurrentHand = 0;
             this.sorted.Power = 0;
-            this.tbPot.Text = "0";
+            this.tablePot.Text = "0";
             this.t = 60;
             this.up = 10000000;
             this.turnCount = 0;
             this.playerStatus.Text = string.Empty;
             this.botOneStatus.Text = string.Empty;
-            this.bot2Status.Text = string.Empty;
-            this.bot3Status.Text = string.Empty;
-            this.bot4Status.Text = string.Empty;
-            this.bot5Status.Text = string.Empty;
+            this.botTwoStatus.Text = string.Empty;
+            this.botThreeStatus.Text = string.Empty;
+            this.botFourStatus.Text = string.Empty;
+            this.botFiveStatus.Text = string.Empty;
             if (this.playerChips <= 0)
             {
                 var f2 = new AddChips();
@@ -2904,10 +3018,10 @@
                     this.botFiveChips += f2.a;
                     this.playerFinishedHisTurn = false;
                     this.playerTurn = true;
-                    this.bRaise.Enabled = true;
-                    this.bFold.Enabled = true;
-                    this.bCheck.Enabled = true;
-                    this.bRaise.Text = "Raise";
+                    this.buttonRaise.Enabled = true;
+                    this.buttonFold.Enabled = true;
+                    this.buttonCheck.Enabled = true;
+                    this.buttonRaise.Text = "Raise";
                 }
             }
 
@@ -2927,7 +3041,7 @@
         private void FixWinners()
         {
             this.win.Clear();
-            this.sorted.Current = 0;
+            this.sorted.CurrentHand = 0;
             this.sorted.Power = 0;
             var fixedLast = "qwerty";
 
@@ -2943,25 +3057,25 @@
                 this.Rules(2, 3, "Bot 1", ref this.botOneType, ref this.botOnePower, this.botOneFinishedTurn);
             }
 
-            if (!this.bot2Status.Text.Contains("Fold"))
+            if (!this.botTwoStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 2";
                 this.Rules(4, 5, "Bot 2", ref this.botTwoType, ref this.botTwoPower, this.botTwoFinishedTurn);
             }
 
-            if (!this.bot3Status.Text.Contains("Fold"))
+            if (!this.botThreeStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 3";
                 this.Rules(6, 7, "Bot 3", ref this.botThreeType, ref this.botThreePower, this.botThreeFinishedTurn);
             }
 
-            if (!this.bot4Status.Text.Contains("Fold"))
+            if (!this.botFourStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 4";
                 this.Rules(8, 9, "Bot 4", ref this.botFourType, ref this.botFourPower, this.botFourFinishedTurn);
             }
 
-            if (!this.bot5Status.Text.Contains("Fold"))
+            if (!this.botFiveStatus.Text.Contains("Fold"))
             {
                 fixedLast = "Bot 5";
                 this.Rules(10, 11, "Bot 5", ref this.botFiveType, ref this.botFivePower, this.botFiveFinishedTurn);
@@ -3239,14 +3353,14 @@
             botTurn = false;
             botChips -= this.call;
             sStatus.Text = "Call " + this.call;
-            this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.call).ToString();
+            this.tablePot.Text = (int.Parse(this.tablePot.Text) + this.call).ToString();
         }
 
         private void Raised(ref int botChips, ref bool botTurn, Label sStatus)
         {
             botChips -= Convert.ToInt32(this.raise);
             sStatus.Text = "Raise " + this.raise;
-            this.tbPot.Text = (int.Parse(this.tbPot.Text) + Convert.ToInt32(this.raise)).ToString();
+            this.tablePot.Text = (int.Parse(this.tablePot.Text) + Convert.ToInt32(this.raise)).ToString();
             this.call = Convert.ToInt32(this.raise);
             this.raising = true;
             botTurn = false;
@@ -3452,7 +3566,7 @@
                         botTurn = false;
                         botChips = 0;
                         botStatus.Text = "Call " + botChips;
-                        this.tbPot.Text = (int.Parse(this.tbPot.Text) + botChips).ToString();
+                        this.tablePot.Text = (int.Parse(this.tablePot.Text) + botChips).ToString();
                     }
                 }
                 else
@@ -3682,7 +3796,7 @@
 
         private async void timer_Tick(object sender, object e)
         {
-            if (this.pbTimer.Value <= 0)
+            if (this.PlayerTurnTimer.Value <= 0)
             {
                 this.playerFinishedHisTurn = true;
                 await this.Turns();
@@ -3691,7 +3805,7 @@
             if (this.t > 0)
             {
                 this.t--;
-                this.pbTimer.Value = (this.t / 6) * 100;
+                this.PlayerTurnTimer.Value = (this.t / 6) * 100;
             }
         }
 
@@ -3700,48 +3814,48 @@
         {
             if (this.playerChips <= 0)
             {
-                this.tbChips.Text = "Chips : 0";
+                this.tableChips.Text = "Chips : 0";
             }
 
             if (this.botOneChips <= 0)
             {
-                this.tbBotChips1.Text = "Chips : 0";
+                this.tableChipsBot1.Text = "Chips : 0";
             }
 
             if (this.botTwoChips <= 0)
             {
-                this.tbBotChips2.Text = "Chips : 0";
+                this.tableChipsBot2.Text = "Chips : 0";
             }
 
             if (this.botThreeChips <= 0)
             {
-                this.tbBotChips3.Text = "Chips : 0";
+                this.tableChipsBot3.Text = "Chips : 0";
             }
 
             if (this.botFourChips <= 0)
             {
-                this.tbBotChips4.Text = "Chips : 0";
+                this.tableChipsBot4.Text = "Chips : 0";
             }
 
             if (this.botFiveChips <= 0)
             {
-                this.tbBotChips5.Text = "Chips : 0";
+                this.tableChipsBot5.Text = "Chips : 0";
             }
 
-            this.tbChips.Text = "Chips : " + this.playerChips;
-            this.tbBotChips1.Text = "Chips : " + this.botOneChips;
-            this.tbBotChips2.Text = "Chips : " + this.botTwoChips;
-            this.tbBotChips3.Text = "Chips : " + this.botThreeChips;
-            this.tbBotChips4.Text = "Chips : " + this.botFourChips;
-            this.tbBotChips5.Text = "Chips : " + this.botFiveChips;
+            this.tableChips.Text = "Chips : " + this.playerChips;
+            this.tableChipsBot1.Text = "Chips : " + this.botOneChips;
+            this.tableChipsBot2.Text = "Chips : " + this.botTwoChips;
+            this.tableChipsBot3.Text = "Chips : " + this.botThreeChips;
+            this.tableChipsBot4.Text = "Chips : " + this.botFourChips;
+            this.tableChipsBot5.Text = "Chips : " + this.botFiveChips;
             if (this.playerChips <= 0)
             {
                 this.playerTurn = false;
                 this.playerFinishedHisTurn = true;
-                this.bCall.Enabled = false;
-                this.bRaise.Enabled = false;
-                this.bFold.Enabled = false;
-                this.bCheck.Enabled = false;
+                this.buttonCall.Enabled = false;
+                this.buttonRaise.Enabled = false;
+                this.buttonFold.Enabled = false;
+                this.buttonCheck.Enabled = false;
             }
 
             if (this.up > 0)
@@ -3751,48 +3865,48 @@
 
             if (this.playerChips >= this.call)
             {
-                this.bCall.Text = "Call " + this.call;
+                this.buttonCall.Text = "Call " + this.call;
             }
             else
             {
-                this.bCall.Text = "All in";
-                this.bRaise.Enabled = false;
+                this.buttonCall.Text = "All in";
+                this.buttonRaise.Enabled = false;
             }
 
             if (this.call > 0)
             {
-                this.bCheck.Enabled = false;
+                this.buttonCheck.Enabled = false;
             }
 
             if (this.call <= 0)
             {
-                this.bCheck.Enabled = true;
-                this.bCall.Text = "Call";
-                this.bCall.Enabled = false;
+                this.buttonCheck.Enabled = true;
+                this.buttonCall.Text = "Call";
+                this.buttonCall.Enabled = false;
             }
 
             if (this.playerChips <= 0)
             {
-                this.bRaise.Enabled = false;
+                this.buttonRaise.Enabled = false;
             }
 
             int parsedValue;
 
-            if (this.tbRaise.Text != string.Empty && int.TryParse(this.tbRaise.Text, out parsedValue))
+            if (this.tableRaise.Text != string.Empty && int.TryParse(this.tableRaise.Text, out parsedValue))
             {
-                if (this.playerChips <= int.Parse(this.tbRaise.Text))
+                if (this.playerChips <= int.Parse(this.tableRaise.Text))
                 {
-                    this.bRaise.Text = "All in";
+                    this.buttonRaise.Text = "All in";
                 }
                 else
                 {
-                    this.bRaise.Text = "Raise";
+                    this.buttonRaise.Text = "Raise";
                 }
             }
 
             if (this.playerChips < this.call)
             {
-                this.bRaise.Enabled = false;
+                this.buttonRaise.Enabled = false;
             }
         }
 
@@ -3814,7 +3928,7 @@
             else
             {
                 // playerStatus.Text = "All in " + Chips;
-                this.bCheck.Enabled = false;
+                this.buttonCheck.Enabled = false;
             }
 
             await this.Turns();
@@ -3826,11 +3940,11 @@
             if (this.playerChips >= this.call)
             {
                 this.playerChips -= this.call;
-                this.tbChips.Text = "Chips : " + this.playerChips;
+                this.tableChips.Text = "Chips : " + this.playerChips;
 
                 // TODO Split conditions
-                this.tbPot.Text = this.tbPot.Text != string.Empty
-                                      ? (int.Parse(this.tbPot.Text) + this.call).ToString()
+                this.tablePot.Text = this.tablePot.Text != string.Empty
+                                      ? (int.Parse(this.tablePot.Text) + this.call).ToString()
                                       : this.call.ToString();
 
                 this.playerTurn = false;
@@ -3839,12 +3953,12 @@
             }
             else if (this.playerChips <= this.call && this.call > 0)
             {
-                this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.playerChips).ToString();
+                this.tablePot.Text = (int.Parse(this.tablePot.Text) + this.playerChips).ToString();
                 this.playerStatus.Text = "All in " + this.playerChips;
                 this.playerChips = 0;
-                this.tbChips.Text = "Chips : " + this.playerChips;
+                this.tableChips.Text = "Chips : " + this.playerChips;
                 this.playerTurn = false;
-                this.bFold.Enabled = false;
+                this.buttonFold.Enabled = false;
                 this.playerCall = this.playerChips;
             }
 
@@ -3857,25 +3971,25 @@
         {
             this.Rules(0, 1, "Player", ref this.pType, ref this.playerPower, this.playerFinishedHisTurn);
             int parsedValue;
-            if (this.tbRaise.Text != string.Empty && int.TryParse(this.tbRaise.Text, out parsedValue))
+            if (this.tableRaise.Text != string.Empty && int.TryParse(this.tableRaise.Text, out parsedValue))
             {
                 if (this.playerChips > this.call)
                 {
-                    if (this.raise * 2 > int.Parse(this.tbRaise.Text))
+                    if (this.raise * 2 > int.Parse(this.tableRaise.Text))
                     {
-                        this.tbRaise.Text = (this.raise * 2).ToString();
+                        this.tableRaise.Text = (this.raise * 2).ToString();
                         MessageBox.Show("You must raise atleast twice as the current raise !");
                         return;
                     }
 
-                    if (this.playerChips >= int.Parse(this.tbRaise.Text))
+                    if (this.playerChips >= int.Parse(this.tableRaise.Text))
                     {
-                        this.call = int.Parse(this.tbRaise.Text);
-                        this.raise = int.Parse(this.tbRaise.Text);
+                        this.call = int.Parse(this.tableRaise.Text);
+                        this.raise = int.Parse(this.tableRaise.Text);
                         this.playerStatus.Text = "Raise " + this.call;
-                        this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.call).ToString();
-                        this.bCall.Text = "Call";
-                        this.playerChips -= int.Parse(this.tbRaise.Text);
+                        this.tablePot.Text = (int.Parse(this.tablePot.Text) + this.call).ToString();
+                        this.buttonCall.Text = "Call";
+                        this.playerChips -= int.Parse(this.tableRaise.Text);
                         this.raising = true;
                         this.last = 0;
                         this.playerRaise = Convert.ToInt32(this.raise);
@@ -3884,7 +3998,7 @@
                     {
                         this.call = this.playerChips;
                         this.raise = this.playerChips;
-                        this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.playerChips).ToString();
+                        this.tablePot.Text = (int.Parse(this.tablePot.Text) + this.playerChips).ToString();
                         this.playerStatus.Text = "Raise " + this.call;
                         this.playerChips = 0;
                         this.raising = true;
@@ -3905,36 +4019,36 @@
 
         private void BAdd_Click(object sender, EventArgs e)
         {
-            if (this.tbAdd.Text != string.Empty)
+            if (this.tableAdd.Text != string.Empty)
             {
-                this.playerChips += int.Parse(this.tbAdd.Text);
-                this.botOneChips += int.Parse(this.tbAdd.Text);
-                this.botTwoChips += int.Parse(this.tbAdd.Text);
-                this.botThreeChips += int.Parse(this.tbAdd.Text);
-                this.botFourChips += int.Parse(this.tbAdd.Text);
-                this.botFiveChips += int.Parse(this.tbAdd.Text);
+                this.playerChips += int.Parse(this.tableAdd.Text);
+                this.botOneChips += int.Parse(this.tableAdd.Text);
+                this.botTwoChips += int.Parse(this.tableAdd.Text);
+                this.botThreeChips += int.Parse(this.tableAdd.Text);
+                this.botFourChips += int.Parse(this.tableAdd.Text);
+                this.botFiveChips += int.Parse(this.tableAdd.Text);
             }
 
-            this.tbChips.Text = "Chips : " + this.playerChips;
+            this.tableChips.Text = "Chips : " + this.playerChips;
         }
 
         private void BOptions_Click(object sender, EventArgs e)
         {
-            this.tbBB.Text = this.bigBlind.ToString();
-            this.tbSB.Text = this.smallBlind.ToString();
-            if (this.tbBB.Visible == false)
+            this.tableBigBlind.Text = this.bigBlind.ToString();
+            this.tableSmallBlind.Text = this.smallBlind.ToString();
+            if (this.tableBigBlind.Visible == false)
             {
-                this.tbBB.Visible = true;
-                this.tbSB.Visible = true;
-                this.bBB.Visible = true;
-                this.bSB.Visible = true;
+                this.tableBigBlind.Visible = true;
+                this.tableSmallBlind.Visible = true;
+                this.buttonBigBlind.Visible = true;
+                this.buttonSmallBlind.Visible = true;
             }
             else
             {
-                this.tbBB.Visible = false;
-                this.tbSB.Visible = false;
-                this.bBB.Visible = false;
-                this.bSB.Visible = false;
+                this.tableBigBlind.Visible = false;
+                this.tableSmallBlind.Visible = false;
+                this.buttonBigBlind.Visible = false;
+                this.buttonSmallBlind.Visible = false;
             }
         }
 
@@ -3942,34 +4056,34 @@
         private void BSB_Click(object sender, EventArgs e)
         {
             int parsedValue;
-            if (this.tbSB.Text.Contains(",") || this.tbSB.Text.Contains("."))
+            if (this.tableSmallBlind.Text.Contains(",") || this.tableSmallBlind.Text.Contains("."))
             {
                 MessageBox.Show("The Small Blind can be only round number !");
-                this.tbSB.Text = this.smallBlind.ToString();
+                this.tableSmallBlind.Text = this.smallBlind.ToString();
                 return;
             }
 
-            if (!int.TryParse(this.tbSB.Text, out parsedValue))
+            if (!int.TryParse(this.tableSmallBlind.Text, out parsedValue))
             {
                 MessageBox.Show("This is a number only field");
-                this.tbSB.Text = this.smallBlind.ToString();
+                this.tableSmallBlind.Text = this.smallBlind.ToString();
                 return;
             }
 
-            if (int.Parse(this.tbSB.Text) > 100000)
+            if (int.Parse(this.tableSmallBlind.Text) > 100000)
             {
                 MessageBox.Show("The maximum of the Small Blind is 100 000 $");
-                this.tbSB.Text = this.smallBlind.ToString();
+                this.tableSmallBlind.Text = this.smallBlind.ToString();
             }
 
-            if (int.Parse(this.tbSB.Text) < 250)
+            if (int.Parse(this.tableSmallBlind.Text) < 250)
             {
                 MessageBox.Show("The minimum of the Small Blind is 250 $");
             }
 
-            if (int.Parse(this.tbSB.Text) >= 250 && int.Parse(this.tbSB.Text) <= 100000)
+            if (int.Parse(this.tableSmallBlind.Text) >= 250 && int.Parse(this.tableSmallBlind.Text) <= 100000)
             {
-                this.smallBlind = int.Parse(this.tbSB.Text);
+                this.smallBlind = int.Parse(this.tableSmallBlind.Text);
                 MessageBox.Show("The changes have been saved ! They will become available the next hand you play. ");
             }
         }
@@ -3978,37 +4092,37 @@
         private void BBB_Click(object sender, EventArgs e)
         {
             int parsedValue;
-            if (this.tbBB.Text.Contains(",") || this.tbBB.Text.Contains("."))
+            if (this.tableBigBlind.Text.Contains(",") || this.tableBigBlind.Text.Contains("."))
             {
                 MessageBox.Show("The Big Blind can be only round number !");
-                this.tbBB.Text = this.bigBlind.ToString();
+                this.tableBigBlind.Text = this.bigBlind.ToString();
                 return;
             }
 
-            if (!int.TryParse(this.tbSB.Text, out parsedValue))
+            if (!int.TryParse(this.tableSmallBlind.Text, out parsedValue))
             {
                 MessageBox.Show("This is a number only field");
-                this.tbSB.Text = this.bigBlind.ToString();
+                this.tableSmallBlind.Text = this.bigBlind.ToString();
                 return;
             }
 
-            if (int.Parse(this.tbBB.Text) > 200000)
+            if (int.Parse(this.tableBigBlind.Text) > 200000)
             {
                 MessageBox.Show("The maximum of the Big Blind is 200 000");
-                this.tbBB.Text = this.bigBlind.ToString();
+                this.tableBigBlind.Text = this.bigBlind.ToString();
             }
 
-            if (int.Parse(this.tbBB.Text) < 500)
+            if (int.Parse(this.tableBigBlind.Text) < 500)
             {
                 MessageBox.Show("The minimum of the Big Blind is 500 $");
             }
 
-            if (int.Parse(this.tbBB.Text) < 500 || int.Parse(this.tbBB.Text) > 200000)
+            if (int.Parse(this.tableBigBlind.Text) < 500 || int.Parse(this.tableBigBlind.Text) > 200000)
             {
                 return;
             }
 
-            this.bigBlind = int.Parse(this.tbBB.Text);
+            this.bigBlind = int.Parse(this.tableBigBlind.Text);
             MessageBox.Show("The changes have been saved ! They will become available the next hand you play. ");
         }
 
@@ -4019,5 +4133,35 @@
         }
 
         #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbBotChips2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botTwoStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbRaise_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayerButtonTimer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

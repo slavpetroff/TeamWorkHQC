@@ -22,3 +22,7 @@ C:\Users\Phoenix\Desktop\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.cs
 F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
 F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.exe
 F:\Data Kiril\SoftUni\Courses\Fundamentals\High-Quality Code\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.pdb
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\bin\Debug\Poker.exe.config
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.exe
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.pdb
+C:\Users\sn3ts\Desktop\TeamWorkHQC\TeamWorkHQC-master\TeamWorkQHC\Poker\obj\Debug\Poker.csprojResolveAssemblyReference.cache
